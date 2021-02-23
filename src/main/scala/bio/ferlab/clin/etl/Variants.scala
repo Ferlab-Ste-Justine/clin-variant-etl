@@ -60,7 +60,6 @@ object Variants {
   }
 
   def build(inputDF: DataFrame, batchId: String)(implicit spark: SparkSession): DataFrame = {
-    import spark.implicits._
     val variants = inputDF
       .select(
         chromosome,

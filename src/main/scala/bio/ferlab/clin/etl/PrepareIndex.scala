@@ -6,6 +6,9 @@ import org.apache.spark.sql.functions.{first, _}
 import org.apache.spark.sql.types.LongType
 import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 
+import java.sql.Timestamp
+import java.time.LocalDateTime
+
 object PrepareIndex extends App {
 
   val Array(output, batchId) = args
@@ -15,6 +18,11 @@ object PrepareIndex extends App {
     .appName(s"Prepare Index").getOrCreate()
 
   run(output, batchId)
+
+  def extract(lastExecutionDateTime: LocalDateTime, executionDateTime: LocalDateTime): DataFrame = {
+    spark.table("variants")
+      .where(col("updatedOn").between(Timestamp.valueOf(lastExecutionDateTime), Timestamp.valueOf(executionDateTime)))
+  }
 
   def run(output: String, batchId: String)(implicit spark: SparkSession): DataFrame = {
     spark.sql("use clin")
