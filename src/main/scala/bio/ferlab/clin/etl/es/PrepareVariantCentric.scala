@@ -33,11 +33,27 @@ class PrepareVariantCentric(releaseId: String)(implicit configuration: Configura
         "normalized_variants_oid", "variants_oid", "created_on", "updated_on")
       .as("variants")
 
+    val variantsWithFrequencies = variants
+      .select(col("variants.*"), explode(col("frequencies_by_lab")).as(List("lab_name", "fbl")))
+      .withColumn("frequencies_by_lab", struct(
+        col("lab_name") ,
+        col("fbl")("an") as "an",
+        col("fbl")("ac") as "ac",
+        col("fbl")("af") as "af",
+        col("fbl")("hom") as "hom",
+        col("fbl")("het") as "het"
+      ))
+      .groupByLocus()
+      .agg(
+        collect_list("frequencies_by_lab") as "frequencies_by_lab",
+        variants.drop("frequencies_by_lab", "chromosome", "start", "reference", "alternate").columns.map(c => first(c) as c):_*
+      ).as("variants")
+
     val consequences = data(enriched_consequences.id)
       .drop("normalized_consequences_oid", "consequences_oid", "created_on", "updated_on")
       .as("consequences")
 
-    joinWithConsequences(variants, consequences)
+    joinWithConsequences(variantsWithFrequencies, consequences)
   }
 
   override def load(data: DataFrame,
@@ -51,7 +67,7 @@ class PrepareVariantCentric(releaseId: String)(implicit configuration: Configura
       .partitionBy(destination.partitionby:_*)
       .mode(SaveMode.Overwrite)
       .option("format", destination.format.sparkFormat)
-      .option("path", s"${destination.rootPath}/es_index/${destination.id}_${releaseId}")
+      .option("path", s"${destination.rootPath}${destination.path}_${releaseId}")
       .saveAsTable(s"${destination.table.get.fullName}_${releaseId}")
     data
   }

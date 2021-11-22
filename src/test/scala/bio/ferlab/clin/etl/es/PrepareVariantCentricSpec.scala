@@ -2,7 +2,7 @@ package bio.ferlab.clin.etl.es
 
 import bio.ferlab.clin.model._
 import bio.ferlab.clin.testutils.WithSparkSession
-import bio.ferlab.datalake.commons.config.{Configuration, ConfigurationLoader, DatasetConf, LoadType, StorageConf}
+import bio.ferlab.datalake.commons.config._
 import bio.ferlab.datalake.commons.file.FileSystemType.LOCAL
 import bio.ferlab.datalake.spark3.loader.LoadResolver
 import org.apache.commons.io.FileUtils
