@@ -76,7 +76,7 @@ class Consequences()(implicit configuration: Configuration) extends ETL {
                     lastRunDateTime: LocalDateTime = minDateTime,
                     currentRunDateTime: LocalDateTime = LocalDateTime.now())(implicit spark: SparkSession): DataFrame = {
     super.load(data
-      .repartition(1, col("chromosome"))
+      .repartition(10, col("chromosome"))
       .sortWithinPartitions("start"))
   }
 
