@@ -54,7 +54,7 @@ class SNV(batchId: String)(implicit configuration: Configuration) extends Occurr
                     lastRunDateTime: LocalDateTime = minDateTime,
                     currentRunDateTime: LocalDateTime = LocalDateTime.now())(implicit spark: SparkSession): DataFrame = {
     super.load(data
-      .repartition(10, col("chromosome"))
+      .repartition(100, col("chromosome"))
       .sortWithinPartitions(col("chromosome"), col("start"))
     )
   }
