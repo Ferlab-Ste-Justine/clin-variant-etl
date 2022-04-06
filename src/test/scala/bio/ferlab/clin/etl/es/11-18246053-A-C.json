@@ -1,0 +1,4709 @@
+{
+  "start": 18246053,
+  "reference": "A",
+  "alternate": "C",
+  "end": 18246054,
+  "is_multi_allelic": false,
+  "genes_symbol": [
+    "SAA2",
+    "RNA5SP333",
+    "SAA2-SAA4"
+  ],
+  "hgvsg": "chr11:g.18246053A>C",
+  "variant_class": "SNV",
+  "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+  "locus": "11-18246053-A-C",
+  "variant_type": "germline",
+  "donors": [
+    {
+      "patient_id": "PA00008",
+      "aliquot_id": "16781",
+      "dp": 84,
+      "gq": 8,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 60,
+      "ad_alt": 24,
+      "ad_total": 84,
+      "ad_ratio": 0.2857142857142857,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "DI",
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "family_id": "FA007",
+      "is_proband": false,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00104",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 16
+        },
+        {
+          "symbol": "SAA2",
+          "count": 102
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 17
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00017",
+      "aliquot_id": "16790",
+      "dp": 72,
+      "gq": 27,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 60,
+      "ad_alt": 12,
+      "ad_total": 72,
+      "ad_ratio": 0.16666666666666666,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "DI",
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "family_id": "FA016",
+      "is_proband": false,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00103",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 21
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 15
+        },
+        {
+          "symbol": "SAA2",
+          "count": 101
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00010",
+      "aliquot_id": "16783",
+      "dp": 71,
+      "gq": 16,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 56,
+      "ad_alt": 15,
+      "ad_total": 71,
+      "ad_ratio": 0.2112676056338028,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "DI",
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "family_id": "FA010",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00104",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "mother_id": "PA00011",
+      "father_id": "PA00012",
+      "mother_calls": [
+        0,
+        0
+      ],
+      "father_calls": [
+        0,
+        1
+      ],
+      "mother_affected_status": true,
+      "father_affected_status": true,
+      "zygosity": "HET",
+      "mother_zygosity": "WT",
+      "father_zygosity": "HET",
+      "parental_origin": "father",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "is_hc": true,
+      "hc_complement": [
+        {
+          "symbol": "SAA2",
+          "locus": [
+            "11-18245641-GA-G",
+            "11-18245588-C-T",
+            "11-18239656-G-A"
+          ]
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "locus": [
+            "11-18245641-GA-G",
+            "11-18231629-C-T",
+            "11-18231849-C-CT",
+            "11-18245588-C-T",
+            "11-18239656-G-A"
+          ]
+        },
+        {
+          "symbol": "RNA5SP333",
+          "locus": [
+            "11-18245641-GA-G",
+            "11-18245588-C-T"
+          ]
+        }
+      ],
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        },
+        {
+          "symbol": "SAA2",
+          "count": 87
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 17
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00013",
+      "aliquot_id": "16786",
+      "dp": 70,
+      "gq": 10,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 48,
+      "ad_alt": 22,
+      "ad_total": 70,
+      "ad_ratio": 0.3142857142857143,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "DI",
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "family_id": "FA013",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00102",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "mother_id": "PA00014",
+      "father_id": "PA00015",
+      "mother_calls": [
+        0,
+        1
+      ],
+      "father_calls": [
+        0,
+        0
+      ],
+      "mother_affected_status": true,
+      "father_affected_status": true,
+      "zygosity": "HET",
+      "mother_zygosity": "HET",
+      "father_zygosity": "WT",
+      "parental_origin": "mother",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "is_hc": true,
+      "hc_complement": [
+        {
+          "symbol": "SAA2",
+          "locus": [
+            "11-18246104-A-C",
+            "11-18245826-C-T"
+          ]
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "locus": [
+            "11-18246104-A-C",
+            "11-18245826-C-T"
+          ]
+        },
+        {
+          "symbol": "RNA5SP333",
+          "locus": [
+            "11-18246104-A-C",
+            "11-18245826-C-T"
+          ]
+        }
+      ],
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 77
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 12
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 14
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00126",
+      "aliquot_id": "16905",
+      "dp": 137,
+      "gq": 3,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 90,
+      "ad_alt": 47,
+      "ad_total": 137,
+      "ad_ratio": 0.34306569343065696,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "DI",
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "family_id": "FA127",
+      "is_proband": false,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00110",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 66
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 9
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 13
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00016",
+      "aliquot_id": "16789",
+      "dp": 60,
+      "gq": 28,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 49,
+      "ad_alt": 11,
+      "ad_total": 60,
+      "ad_ratio": 0.18333333333333332,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "DI",
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "family_id": "FA016",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00103",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "mother_id": "PA00017",
+      "father_id": "PA00018",
+      "mother_calls": [
+        0,
+        1
+      ],
+      "father_calls": [
+        0,
+        1
+      ],
+      "mother_affected_status": true,
+      "father_affected_status": true,
+      "zygosity": "HET",
+      "mother_zygosity": "HET",
+      "father_zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "autosomal_dominant",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        },
+        {
+          "symbol": "SAA2",
+          "count": 87
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 17
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00012",
+      "aliquot_id": "16785",
+      "dp": 90,
+      "gq": 16,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 70,
+      "ad_alt": 20,
+      "ad_total": 90,
+      "ad_ratio": 0.2222222222222222,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "DI",
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "family_id": "FA010",
+      "is_proband": false,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00104",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 9
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 13
+        },
+        {
+          "symbol": "SAA2",
+          "count": 56
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00002",
+      "aliquot_id": "16775",
+      "dp": 83,
+      "gq": 4,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 56,
+      "ad_alt": 27,
+      "ad_total": 83,
+      "ad_ratio": 0.3253012048192771,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "DI",
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "family_id": "FA001",
+      "is_proband": false,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00101",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 15
+        },
+        {
+          "symbol": "SAA2",
+          "count": 96
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 17
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00120",
+      "aliquot_id": "16899",
+      "dp": 136,
+      "gq": 12,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 99,
+      "ad_alt": 37,
+      "ad_total": 136,
+      "ad_ratio": 0.27205882352941174,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "DI",
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "family_id": "FA121",
+      "is_proband": false,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00110",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 9
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 12
+        },
+        {
+          "symbol": "SAA2",
+          "count": 62
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00123",
+      "aliquot_id": "16902",
+      "dp": 137,
+      "gq": 4,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 90,
+      "ad_alt": 47,
+      "ad_total": 137,
+      "ad_ratio": 0.34306569343065696,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "DI",
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "family_id": "FA124",
+      "is_proband": false,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00107",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 8
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 12
+        },
+        {
+          "symbol": "SAA2",
+          "count": 62
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00014",
+      "aliquot_id": "16787",
+      "dp": 93,
+      "gq": 3,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 61,
+      "ad_alt": 32,
+      "ad_total": 93,
+      "ad_ratio": 0.34408602150537637,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "DI",
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "family_id": "FA013",
+      "is_proband": false,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00102",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 16
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 15
+        },
+        {
+          "symbol": "SAA2",
+          "count": 96
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00005",
+      "aliquot_id": "16778",
+      "dp": 62,
+      "gq": 26,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 51,
+      "ad_alt": 11,
+      "ad_total": 62,
+      "ad_ratio": 0.1774193548387097,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "DI",
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "family_id": "FA004",
+      "is_proband": false,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00101",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 13
+        },
+        {
+          "symbol": "SAA2",
+          "count": 89
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 17
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00018",
+      "aliquot_id": "16791",
+      "dp": 82,
+      "gq": 27,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 68,
+      "ad_alt": 14,
+      "ad_total": 82,
+      "ad_ratio": 0.17073170731707318,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "DI",
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "family_id": "FA016",
+      "is_proband": false,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00103",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 11
+        },
+        {
+          "symbol": "SAA2",
+          "count": 68
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 14
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00006",
+      "aliquot_id": "16779",
+      "dp": 65,
+      "gq": 10,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 49,
+      "ad_alt": 16,
+      "ad_total": 65,
+      "ad_ratio": 0.24615384615384617,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "DI",
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "family_id": "FA004",
+      "is_proband": false,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00101",
+      "organization_id": "CHUSJ",
+      "affected_status": false,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 9
+        },
+        {
+          "symbol": "SAA2",
+          "count": 54
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 11
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00109",
+      "aliquot_id": "16882",
+      "dp": 86,
+      "gq": 23,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 69,
+      "ad_alt": 17,
+      "ad_total": 86,
+      "ad_ratio": 0.19767441860465115,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA109",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00111",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 16
+        },
+        {
+          "symbol": "SAA2",
+          "count": 93
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00085",
+      "aliquot_id": "16858",
+      "dp": 100,
+      "gq": 19,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 79,
+      "ad_alt": 21,
+      "ad_total": 100,
+      "ad_ratio": 0.21,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA085",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00113",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        },
+        {
+          "symbol": "SAA2",
+          "count": 102
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 19
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00030",
+      "aliquot_id": "16803",
+      "dp": 94,
+      "gq": 7,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 63,
+      "ad_alt": 31,
+      "ad_total": 94,
+      "ad_ratio": 0.32978723404255317,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA030",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00106",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 13
+        },
+        {
+          "symbol": "SAA2",
+          "count": 89
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 17
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00059",
+      "aliquot_id": "16832",
+      "dp": 128,
+      "gq": 6,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 83,
+      "ad_alt": 45,
+      "ad_total": 128,
+      "ad_ratio": 0.3515625,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA059",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00117",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 44
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 9
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 7
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00099",
+      "aliquot_id": "16872",
+      "dp": 54,
+      "gq": 17,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 43,
+      "ad_alt": 11,
+      "ad_total": 54,
+      "ad_ratio": 0.2037037037037037,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA099",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00115",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 16
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 16
+        },
+        {
+          "symbol": "SAA2",
+          "count": 96
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00029",
+      "aliquot_id": "16802",
+      "dp": 71,
+      "gq": 22,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 56,
+      "ad_alt": 15,
+      "ad_total": 71,
+      "ad_ratio": 0.2112676056338028,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA029",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00105",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 78
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 12
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 13
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00105",
+      "aliquot_id": "16878",
+      "dp": 118,
+      "gq": 23,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 95,
+      "ad_alt": 23,
+      "ad_total": 118,
+      "ad_ratio": 0.19491525423728814,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA105",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00107",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 63
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 9
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 11
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00031",
+      "aliquot_id": "16804",
+      "dp": 90,
+      "gq": 23,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 72,
+      "ad_alt": 18,
+      "ad_total": 90,
+      "ad_ratio": 0.2,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA031",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00106",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 15
+        },
+        {
+          "symbol": "SAA2",
+          "count": 90
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 15
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00045",
+      "aliquot_id": "16818",
+      "dp": 73,
+      "gq": 15,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 42,
+      "ad_alt": 31,
+      "ad_total": 73,
+      "ad_ratio": 0.4246575342465753,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA045",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00108",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 5
+        },
+        {
+          "symbol": "SAA2",
+          "count": 32
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 8
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00046",
+      "aliquot_id": "16819",
+      "dp": 91,
+      "gq": 22,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 73,
+      "ad_alt": 18,
+      "ad_total": 91,
+      "ad_ratio": 0.1978021978021978,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA046",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00109",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 16
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 13
+        },
+        {
+          "symbol": "SAA2",
+          "count": 83
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00100",
+      "aliquot_id": "16873",
+      "dp": 93,
+      "gq": 4,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 59,
+      "ad_alt": 34,
+      "ad_total": 93,
+      "ad_ratio": 0.3655913978494624,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA100",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00116",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 50
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 8
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 11
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00024",
+      "aliquot_id": "16797",
+      "dp": 53,
+      "gq": 15,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 20,
+      "ad_alt": 33,
+      "ad_total": 53,
+      "ad_ratio": 0.6226415094339622,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA024",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00106",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 9
+        },
+        {
+          "symbol": "SAA2",
+          "count": 54
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 9
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00056",
+      "aliquot_id": "16829",
+      "dp": 71,
+      "gq": 25,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 58,
+      "ad_alt": 13,
+      "ad_total": 71,
+      "ad_ratio": 0.18309859154929578,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA056",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00114",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 13
+        },
+        {
+          "symbol": "SAA2",
+          "count": 78
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 13
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00095",
+      "aliquot_id": "16868",
+      "dp": 114,
+      "gq": 26,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 93,
+      "ad_alt": 21,
+      "ad_total": 114,
+      "ad_ratio": 0.18421052631578946,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA095",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00117",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 13
+        },
+        {
+          "symbol": "SAA2",
+          "count": 84
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 14
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00038",
+      "aliquot_id": "16811",
+      "dp": 113,
+      "gq": 17,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 84,
+      "ad_alt": 29,
+      "ad_total": 113,
+      "ad_ratio": 0.25663716814159293,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA038",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00107",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 16
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        },
+        {
+          "symbol": "SAA2",
+          "count": 90
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00118",
+      "aliquot_id": "16891",
+      "dp": 111,
+      "gq": 17,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 75,
+      "ad_alt": 36,
+      "ad_total": 111,
+      "ad_ratio": 0.32432432432432434,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA118",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00108",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 9
+        },
+        {
+          "symbol": "SAA2",
+          "count": 69
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 14
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00025",
+      "aliquot_id": "16798",
+      "dp": 84,
+      "gq": 7,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 49,
+      "ad_alt": 35,
+      "ad_total": 84,
+      "ad_ratio": 0.4166666666666667,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA025",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00101",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 93
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 15
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 17
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00067",
+      "aliquot_id": "16840",
+      "dp": 77,
+      "gq": 18,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 57,
+      "ad_alt": 20,
+      "ad_total": 77,
+      "ad_ratio": 0.2597402597402597,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA067",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00113",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 95
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 15
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 18
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00057",
+      "aliquot_id": "16830",
+      "dp": 98,
+      "gq": 4,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 61,
+      "ad_alt": 37,
+      "ad_total": 98,
+      "ad_ratio": 0.37755102040816324,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA057",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00115",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 95
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 15
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 17
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00052",
+      "aliquot_id": "16825",
+      "dp": 142,
+      "gq": 9,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 97,
+      "ad_alt": 45,
+      "ad_total": 142,
+      "ad_ratio": 0.31690140845070425,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA052",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00109",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 72
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 12
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 13
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00047",
+      "aliquot_id": "16820",
+      "dp": 101,
+      "gq": 13,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 75,
+      "ad_alt": 26,
+      "ad_total": 101,
+      "ad_ratio": 0.25742574257425743,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA047",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00110",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 6
+        },
+        {
+          "symbol": "SAA2",
+          "count": 36
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 6
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00053",
+      "aliquot_id": "16826",
+      "dp": 147,
+      "gq": 5,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 99,
+      "ad_alt": 48,
+      "ad_total": 147,
+      "ad_ratio": 0.32653061224489793,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA053",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00110",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 16
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 13
+        },
+        {
+          "symbol": "SAA2",
+          "count": 83
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00073",
+      "aliquot_id": "16846",
+      "dp": 83,
+      "gq": 6,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 50,
+      "ad_alt": 33,
+      "ad_total": 83,
+      "ad_ratio": 0.39759036144578314,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA073",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00113",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 16
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 13
+        },
+        {
+          "symbol": "SAA2",
+          "count": 89
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00080",
+      "aliquot_id": "16853",
+      "dp": 46,
+      "gq": 15,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 21,
+      "ad_alt": 25,
+      "ad_total": 46,
+      "ad_ratio": 0.5434782608695652,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA080",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00114",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 7
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 6
+        },
+        {
+          "symbol": "SAA2",
+          "count": 38
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00071",
+      "aliquot_id": "16844",
+      "dp": 72,
+      "gq": 26,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 59,
+      "ad_alt": 13,
+      "ad_total": 72,
+      "ad_ratio": 0.18055555555555555,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA071",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00117",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 16
+        },
+        {
+          "symbol": "SAA2",
+          "count": 93
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00042",
+      "aliquot_id": "16815",
+      "dp": 91,
+      "gq": 18,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 72,
+      "ad_alt": 19,
+      "ad_total": 91,
+      "ad_ratio": 0.2087912087912088,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA042",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00111",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 13
+        },
+        {
+          "symbol": "SAA2",
+          "count": 87
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 15
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00043",
+      "aliquot_id": "16816",
+      "dp": 87,
+      "gq": 30,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 72,
+      "ad_alt": 15,
+      "ad_total": 87,
+      "ad_ratio": 0.1724137931034483,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA043",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00112",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 102
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 17
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 17
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00078",
+      "aliquot_id": "16851",
+      "dp": 94,
+      "gq": 11,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 48,
+      "ad_alt": 46,
+      "ad_total": 94,
+      "ad_ratio": 0.48936170212765956,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA078",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00117",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 21
+        },
+        {
+          "symbol": "SAA2",
+          "count": 115
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 17
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00051",
+      "aliquot_id": "16824",
+      "dp": 113,
+      "gq": 29,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 94,
+      "ad_alt": 19,
+      "ad_total": 113,
+      "ad_ratio": 0.168141592920354,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA051",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00108",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 20
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 15
+        },
+        {
+          "symbol": "SAA2",
+          "count": 106
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00089",
+      "aliquot_id": "16862",
+      "dp": 92,
+      "gq": 24,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 75,
+      "ad_alt": 17,
+      "ad_total": 92,
+      "ad_ratio": 0.18478260869565216,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA089",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00117",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        },
+        {
+          "symbol": "SAA2",
+          "count": 90
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 15
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00096",
+      "aliquot_id": "16869",
+      "dp": 79,
+      "gq": 14,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 57,
+      "ad_alt": 22,
+      "ad_total": 79,
+      "ad_ratio": 0.27848101265822783,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA096",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00117",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 63
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 9
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 13
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00072",
+      "aliquot_id": "16845",
+      "dp": 82,
+      "gq": 24,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 66,
+      "ad_alt": 16,
+      "ad_total": 82,
+      "ad_ratio": 0.1951219512195122,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA072",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00117",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 48
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 8
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 9
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00128",
+      "aliquot_id": "16907",
+      "dp": 100,
+      "gq": 27,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 83,
+      "ad_alt": 17,
+      "ad_total": 100,
+      "ad_ratio": 0.17,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA128",
+      "is_proband": true,
+      "gender": "unknown",
+      "practitioner_role_id": "PRR00112",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 22
+        },
+        {
+          "symbol": "SAA2",
+          "count": 101
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00115",
+      "aliquot_id": "16888",
+      "dp": 79,
+      "gq": 5,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 43,
+      "ad_alt": 36,
+      "ad_total": 79,
+      "ad_ratio": 0.45569620253164556,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA115",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00111",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 15
+        },
+        {
+          "symbol": "SAA2",
+          "count": 90
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 15
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00023",
+      "aliquot_id": "16796",
+      "dp": 100,
+      "gq": 10,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 71,
+      "ad_alt": 29,
+      "ad_total": 100,
+      "ad_ratio": 0.29,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA023",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00105",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 14
+        },
+        {
+          "symbol": "SAA2",
+          "count": 84
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00041",
+      "aliquot_id": "16814",
+      "dp": 78,
+      "gq": 20,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 62,
+      "ad_alt": 16,
+      "ad_total": 78,
+      "ad_ratio": 0.20512820512820512,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA041",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00110",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 89
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 17
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00091",
+      "aliquot_id": "16864",
+      "dp": 122,
+      "gq": 8,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 86,
+      "ad_alt": 36,
+      "ad_total": 122,
+      "ad_ratio": 0.29508196721311475,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA091",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00113",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 19
+        },
+        {
+          "symbol": "SAA2",
+          "count": 111
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 17
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00108",
+      "aliquot_id": "16881",
+      "dp": 79,
+      "gq": 6,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 48,
+      "ad_alt": 31,
+      "ad_total": 79,
+      "ad_ratio": 0.3924050632911392,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA108",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00110",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 95
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 16
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00026",
+      "aliquot_id": "16799",
+      "dp": 84,
+      "gq": 11,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 59,
+      "ad_alt": 25,
+      "ad_total": 84,
+      "ad_ratio": 0.2976190476190476,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA026",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00102",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 9
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 17
+        },
+        {
+          "symbol": "SAA2",
+          "count": 84
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00083",
+      "aliquot_id": "16856",
+      "dp": 92,
+      "gq": 5,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 56,
+      "ad_alt": 36,
+      "ad_total": 92,
+      "ad_ratio": 0.391304347826087,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA083",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00117",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 86
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 13
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 15
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00062",
+      "aliquot_id": "16835",
+      "dp": 98,
+      "gq": 3,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 62,
+      "ad_alt": 36,
+      "ad_total": 98,
+      "ad_ratio": 0.3673469387755102,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA062",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00114",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 15
+        },
+        {
+          "symbol": "SAA2",
+          "count": 90
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 15
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00092",
+      "aliquot_id": "16865",
+      "dp": 94,
+      "gq": 17,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 75,
+      "ad_alt": 19,
+      "ad_total": 94,
+      "ad_ratio": 0.20212765957446807,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA092",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00114",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 72
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 16
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 10
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00117",
+      "aliquot_id": "16890",
+      "dp": 84,
+      "gq": 5,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 59,
+      "ad_alt": 25,
+      "ad_total": 84,
+      "ad_ratio": 0.2976190476190476,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA117",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00107",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 9
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 15
+        },
+        {
+          "symbol": "SAA2",
+          "count": 71
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00027",
+      "aliquot_id": "16800",
+      "dp": 72,
+      "gq": 6,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 53,
+      "ad_alt": 19,
+      "ad_total": 72,
+      "ad_ratio": 0.2638888888888889,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA027",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00103",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 15
+        },
+        {
+          "symbol": "SAA2",
+          "count": 90
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 15
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00055",
+      "aliquot_id": "16828",
+      "dp": 103,
+      "gq": 4,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 62,
+      "ad_alt": 41,
+      "ad_total": 103,
+      "ad_ratio": 0.39805825242718446,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA055",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00114",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 9
+        },
+        {
+          "symbol": "SAA2",
+          "count": 54
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 10
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00048",
+      "aliquot_id": "16821",
+      "dp": 68,
+      "gq": 14,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 33,
+      "ad_alt": 35,
+      "ad_total": 68,
+      "ad_ratio": 0.5147058823529411,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA048",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00111",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 6
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 9
+        },
+        {
+          "symbol": "SAA2",
+          "count": 47
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00093",
+      "aliquot_id": "16866",
+      "dp": 116,
+      "gq": 3,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 74,
+      "ad_alt": 42,
+      "ad_total": 116,
+      "ad_ratio": 0.3620689655172414,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA093",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00115",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 48
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 8
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 9
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00028",
+      "aliquot_id": "16801",
+      "dp": 91,
+      "gq": 25,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 74,
+      "ad_alt": 17,
+      "ad_total": 91,
+      "ad_ratio": 0.18681318681318682,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA028",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00104",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 66
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 13
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 10
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00049",
+      "aliquot_id": "16822",
+      "dp": 113,
+      "gq": 10,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 83,
+      "ad_alt": 30,
+      "ad_total": 113,
+      "ad_ratio": 0.26548672566371684,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA049",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00112",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 60
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 10
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 10
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00019",
+      "aliquot_id": "16792",
+      "dp": 79,
+      "gq": 4,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 49,
+      "ad_alt": 30,
+      "ad_total": 79,
+      "ad_ratio": 0.379746835443038,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA019",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00101",
+      "organization_id": "CHUSJ",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 60
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 10
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 10
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00036",
+      "aliquot_id": "16809",
+      "dp": 94,
+      "gq": 29,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 78,
+      "ad_alt": 16,
+      "ad_total": 94,
+      "ad_ratio": 0.1702127659574468,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA036",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00117",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 20
+        },
+        {
+          "symbol": "SAA2",
+          "count": 96
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 12
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00104",
+      "aliquot_id": "16877",
+      "dp": 76,
+      "gq": 28,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 63,
+      "ad_alt": 13,
+      "ad_total": 76,
+      "ad_ratio": 0.17105263157894737,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA104",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00114",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 93
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 17
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00070",
+      "aliquot_id": "16843",
+      "dp": 123,
+      "gq": 27,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 101,
+      "ad_alt": 22,
+      "ad_total": 123,
+      "ad_ratio": 0.17886178861788618,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA070",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00116",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 59
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 8
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 12
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00054",
+      "aliquot_id": "16827",
+      "dp": 107,
+      "gq": 28,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 65,
+      "ad_alt": 42,
+      "ad_total": 107,
+      "ad_ratio": 0.3925233644859813,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA054",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00111",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 16
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        },
+        {
+          "symbol": "SAA2",
+          "count": 90
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00058",
+      "aliquot_id": "16831",
+      "dp": 108,
+      "gq": 3,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 74,
+      "ad_alt": 34,
+      "ad_total": 108,
+      "ad_ratio": 0.3148148148148148,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA058",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00116",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 9
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 15
+        },
+        {
+          "symbol": "SAA2",
+          "count": 68
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00090",
+      "aliquot_id": "16863",
+      "dp": 111,
+      "gq": 12,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 78,
+      "ad_alt": 33,
+      "ad_total": 111,
+      "ad_ratio": 0.2972972972972973,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA090",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00117",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        },
+        {
+          "symbol": "SAA2",
+          "count": 90
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 17
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00033",
+      "aliquot_id": "16806",
+      "dp": 95,
+      "gq": 23,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 77,
+      "ad_alt": 18,
+      "ad_total": 95,
+      "ad_ratio": 0.18947368421052632,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA033",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00114",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 59
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 8
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 11
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00075",
+      "aliquot_id": "16848",
+      "dp": 94,
+      "gq": 3,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 58,
+      "ad_alt": 36,
+      "ad_total": 94,
+      "ad_ratio": 0.3829787234042553,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA075",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00115",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 20
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 16
+        },
+        {
+          "symbol": "SAA2",
+          "count": 107
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00094",
+      "aliquot_id": "16867",
+      "dp": 57,
+      "gq": 15,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 30,
+      "ad_alt": 27,
+      "ad_total": 57,
+      "ad_ratio": 0.47368421052631576,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA094",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00116",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 6
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 8
+        },
+        {
+          "symbol": "SAA2",
+          "count": 42
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00103",
+      "aliquot_id": "16876",
+      "dp": 69,
+      "gq": 19,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 55,
+      "ad_alt": 14,
+      "ad_total": 69,
+      "ad_ratio": 0.2028985507246377,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA103",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00113",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "RNA5SP333",
+          "count": 14
+        },
+        {
+          "symbol": "SAA2",
+          "count": 90
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 15
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00081",
+      "aliquot_id": "16854",
+      "dp": 97,
+      "gq": 3,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 62,
+      "ad_alt": 35,
+      "ad_total": 97,
+      "ad_ratio": 0.36082474226804123,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA081",
+      "is_proband": true,
+      "gender": "Female",
+      "practitioner_role_id": "PRR00115",
+      "organization_id": "CHUS",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 72
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 12
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 11
+        }
+      ],
+      "is_possibly_hc": true
+    },
+    {
+      "patient_id": "PA00050",
+      "aliquot_id": "16823",
+      "dp": 84,
+      "gq": 9,
+      "calls": [
+        0,
+        1
+      ],
+      "qd": 0.22,
+      "has_alt": true,
+      "filters": [
+        "PASS"
+      ],
+      "ad_ref": 45,
+      "ad_alt": 39,
+      "ad_total": 84,
+      "ad_ratio": 0.4642857142857143,
+      "hgvsg": "chr11:g.18246053A>C",
+      "variant_class": "SNV",
+      "batch_id": "201106_A00516_0169_AHFM3HDSXY",
+      "last_update": 1643587200000,
+      "variant_type": "germline",
+      "sequencing_strategy": "WXS",
+      "genome_build": "GRCh38",
+      "analysis_code": "MMG",
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "family_id": "FA050",
+      "is_proband": true,
+      "gender": "Male",
+      "practitioner_role_id": "PRR00107",
+      "organization_id": "CUSM",
+      "affected_status": true,
+      "zygosity": "HET",
+      "norm_calls": [
+        0,
+        1
+      ],
+      "transmission": "unknown_parents_genotype",
+      "possibly_hc_complement": [
+        {
+          "symbol": "SAA2",
+          "count": 48
+        },
+        {
+          "symbol": "RNA5SP333",
+          "count": 8
+        },
+        {
+          "symbol": "SAA2-SAA4",
+          "count": 11
+        }
+      ],
+      "is_possibly_hc": true
+    }
+  ],
+  "frequencies_by_analysis": [
+    {
+      "analysis_display_name": "Déficience intellectuelle (Trio)",
+      "analysis_code": "DI",
+      "affected": {
+        "ac": 13,
+        "an": 48,
+        "af": 0.2708333333333333,
+        "pc": 13,
+        "pn": 24,
+        "pf": 0.5416666666666666,
+        "hom": 0
+      },
+      "non_affected": {
+        "ac": 1,
+        "an": 6,
+        "af": 0.16666666666666666,
+        "pc": 1,
+        "pn": 3,
+        "pf": 0.3333333333333333,
+        "hom": 0
+      },
+      "total": {
+        "ac": 14,
+        "an": 54,
+        "af": 0.25925925925925924,
+        "pc": 14,
+        "pn": 27,
+        "pf": 0.5185185185185185,
+        "hom": 0
+      }
+    },
+    {
+      "analysis_display_name": "Maladies musculaires (Panel global)",
+      "analysis_code": "MMG",
+      "affected": {
+        "ac": 62,
+        "an": 202,
+        "af": 0.3069306930693069,
+        "pc": 62,
+        "pn": 101,
+        "pf": 0.6138613861386139,
+        "hom": 0
+      },
+      "non_affected": {
+        "ac": 0,
+        "an": 0,
+        "af": 0.0,
+        "pc": 0,
+        "pn": 0,
+        "pf": 0.0,
+        "hom": 0
+      },
+      "total": {
+        "ac": 62,
+        "an": 202,
+        "af": 0.3069306930693069,
+        "pc": 62,
+        "pn": 101,
+        "pf": 0.6138613861386139,
+        "hom": 0
+      }
+    }
+  ],
+  "frequency_RQDM": {
+    "affected": {
+      "ac": 75,
+      "an": 250,
+      "af": 0.3,
+      "pc": 75,
+      "pn": 125,
+      "pf": 0.6,
+      "hom": 0
+    },
+    "non_affected": {
+      "ac": 1,
+      "an": 6,
+      "af": 0.16666666666666666,
+      "pc": 1,
+      "pn": 3,
+      "pf": 0.3333333333333333,
+      "hom": 0
+    },
+    "total": {
+      "ac": 76,
+      "an": 256,
+      "af": 0.296875,
+      "pc": 76,
+      "pn": 128,
+      "pf": 0.59375,
+      "hom": 0
+    }
+  },
+  "assembly_version": "GRCh38",
+  "last_annotation_update": 1643673600000,
+  "dna_change": "A>C",
+  "external_frequencies": {
+    "topmed_bravo": {
+      "ac": 1236,
+      "af": 0.00984327,
+      "an": 125568,
+      "hom": 0,
+      "het": 1236
+    },
+    "gnomad_genomes_2_1_1": {
+      "ac": 168,
+      "af": 0.006427915518824609,
+      "an": 26136,
+      "hom": 0
+    },
+    "gnomad_exomes_2_1_1": {
+      "ac": 29060,
+      "af": 0.18384725367884303,
+      "an": 158066,
+      "hom": 1
+    },
+    "gnomad_genomes_3_0": {
+      "ac": 1026,
+      "af": 0.008805355303810505,
+      "an": 116520,
+      "hom": 0
+    },
+    "gnomad_genomes_3_1_1": {
+      "ac": 1049,
+      "af": 0.00839953,
+      "an": 124888,
+      "hom": 0
+    }
+  },
+  "rsnumber": "rs200930008",
+  "genes": [
+    {
+      "symbol": "SAA2-SAA4",
+      "entrez_gene_id": 100528017,
+      "hgnc": "HGNC:39550",
+      "ensembl_gene_id": "ENSG00000255071",
+      "location": "11p15.1",
+      "name": "SAA2-SAA4 readthrough",
+      "biotype": "protein_coding",
+      "orphanet": [],
+      "hpo": [],
+      "omim": [],
+      "ddd": [],
+      "cosmic": []
+    },
+    {
+      "symbol": "RNA5SP333",
+      "entrez_gene_id": 106480763,
+      "hgnc": "HGNC:43233",
+      "ensembl_gene_id": "ENSG00000200336",
+      "location": "11p15.1",
+      "name": "RNA, 5S ribosomal pseudogene 333",
+      "alias": [
+        "RN5S333"
+      ],
+      "biotype": "pseudo",
+      "orphanet": [],
+      "hpo": [],
+      "omim": [],
+      "ddd": [],
+      "cosmic": []
+    },
+    {
+      "symbol": "SAA2",
+      "entrez_gene_id": 6289,
+      "omim_gene_id": "104751",
+      "hgnc": "HGNC:10514",
+      "ensembl_gene_id": "ENSG00000134339",
+      "location": "11p15.1",
+      "name": "serum amyloid A2",
+      "alias": [
+        "SAA",
+        "SAA1"
+      ],
+      "biotype": "protein_coding",
+      "orphanet": [],
+      "hpo": [],
+      "omim": [],
+      "ddd": [],
+      "cosmic": []
+    }
+  ],
+  "omim": [],
+  "gene_external_reference": [],
+  "variant_external_reference": [
+    "DBSNP"
+  ],
+  "hash": "7be4ef005b8ab4d403f18ccff37fd98f2dd9cabf",
+  "consequences": [
+    {
+      "ensembl_transcript_id": "ENST00000528349",
+      "ensembl_gene_id": "ENSG00000134339",
+      "consequences": [
+        "splice_region_variant",
+        "intron_variant"
+      ],
+      "vep_impact": "LOW",
+      "symbol": "SAA2",
+      "ensembl_feature_id": "ENST00000528349",
+      "feature_type": "Transcript",
+      "strand": -1,
+      "biotype": "protein_coding",
+      "intron": {
+        "rank": 2,
+        "total": 3
+      },
+      "hgvsc": "ENST00000528349.5:c.92-5T>G",
+      "pick": false,
+      "original_canonical": false,
+      "impact_score": 2,
+      "consequence": [
+        "splice region",
+        "intron"
+      ],
+      "canonical": false
+    },
+    {
+      "ensembl_transcript_id": "ENST00000414546",
+      "ensembl_gene_id": "ENSG00000134339",
+      "consequences": [
+        "splice_region_variant",
+        "intron_variant"
+      ],
+      "vep_impact": "LOW",
+      "symbol": "SAA2",
+      "ensembl_feature_id": "ENST00000414546",
+      "feature_type": "Transcript",
+      "strand": -1,
+      "biotype": "protein_coding",
+      "intron": {
+        "rank": 2,
+        "total": 3
+      },
+      "hgvsc": "ENST00000414546.6:c.92-5T>G",
+      "pick": false,
+      "original_canonical": false,
+      "impact_score": 2,
+      "consequence": [
+        "splice region",
+        "intron"
+      ],
+      "canonical": false
+    },
+    {
+      "ensembl_transcript_id": "ENST00000363466",
+      "ensembl_gene_id": "ENSG00000200336",
+      "consequences": [
+        "downstream_gene_variant"
+      ],
+      "vep_impact": "MODIFIER",
+      "symbol": "RNA5SP333",
+      "ensembl_feature_id": "ENST00000363466",
+      "feature_type": "Transcript",
+      "strand": -1,
+      "biotype": "rRNA_pseudogene",
+      "pick": true,
+      "original_canonical": true,
+      "impact_score": 1,
+      "consequence": [
+        "downstream gene"
+      ],
+      "mane_select": false,
+      "mane_plus": false,
+      "is_canonical": true,
+      "canonical": true
+    },
+    {
+      "ensembl_transcript_id": "ENST00000526900",
+      "ensembl_gene_id": "ENSG00000134339",
+      "consequences": [
+        "splice_region_variant",
+        "intron_variant"
+      ],
+      "vep_impact": "LOW",
+      "symbol": "SAA2",
+      "ensembl_feature_id": "ENST00000526900",
+      "feature_type": "Transcript",
+      "strand": -1,
+      "biotype": "protein_coding",
+      "intron": {
+        "rank": 2,
+        "total": 3
+      },
+      "hgvsc": "ENST00000526900.1:c.92-5T>G",
+      "pick": true,
+      "original_canonical": true,
+      "impact_score": 2,
+      "consequence": [
+        "splice region",
+        "intron"
+      ],
+      "canonical": false
+    },
+    {
+      "ensembl_transcript_id": "ENST00000529528",
+      "ensembl_gene_id": "ENSG00000134339",
+      "consequences": [
+        "splice_region_variant",
+        "intron_variant"
+      ],
+      "vep_impact": "LOW",
+      "symbol": "SAA2",
+      "ensembl_feature_id": "ENST00000529528",
+      "feature_type": "Transcript",
+      "strand": -1,
+      "biotype": "protein_coding",
+      "intron": {
+        "rank": 3,
+        "total": 4
+      },
+      "hgvsc": "ENST00000529528.5:c.92-5T>G",
+      "pick": false,
+      "original_canonical": false,
+      "impact_score": 2,
+      "consequence": [
+        "splice region",
+        "intron"
+      ],
+      "canonical": false
+    },
+    {
+      "ensembl_transcript_id": "ENST00000524555",
+      "ensembl_gene_id": "ENSG00000255071",
+      "consequences": [
+        "splice_region_variant",
+        "intron_variant"
+      ],
+      "vep_impact": "LOW",
+      "symbol": "SAA2-SAA4",
+      "ensembl_feature_id": "ENST00000524555",
+      "feature_type": "Transcript",
+      "strand": -1,
+      "biotype": "protein_coding",
+      "intron": {
+        "rank": 2,
+        "total": 5
+      },
+      "hgvsc": "ENST00000524555.3:c.92-5T>G",
+      "pick": true,
+      "original_canonical": true,
+      "impact_score": 2,
+      "consequence": [
+        "splice region",
+        "intron"
+      ],
+      "uniprot_id": "A0A096LPE2",
+      "refseq_mrna_id": "NM_001199744",
+      "refseq_protein_id": "NP_001186673",
+      "mane_select": false,
+      "mane_plus": false,
+      "is_canonical": true,
+      "canonical": true
+    },
+    {
+      "ensembl_transcript_id": "ENST00000256733",
+      "ensembl_gene_id": "ENSG00000134339",
+      "consequences": [
+        "splice_region_variant",
+        "intron_variant"
+      ],
+      "vep_impact": "LOW",
+      "symbol": "SAA2",
+      "ensembl_feature_id": "ENST00000256733",
+      "feature_type": "Transcript",
+      "strand": -1,
+      "biotype": "protein_coding",
+      "intron": {
+        "rank": 2,
+        "total": 3
+      },
+      "hgvsc": "ENST00000256733.9:c.92-5T>G",
+      "pick": false,
+      "original_canonical": false,
+      "impact_score": 2,
+      "consequence": [
+        "splice region",
+        "intron"
+      ],
+      "uniprot_id": "P0DJI9-1",
+      "refseq_mrna_id": "NM_030754",
+      "refseq_protein_id": "NP_110381",
+      "mane_select": true,
+      "mane_plus": false,
+      "is_canonical": true,
+      "canonical": true
+    },
+    {
+      "ensembl_transcript_id": "ENST00000530400",
+      "ensembl_gene_id": "ENSG00000134339",
+      "consequences": [
+        "splice_region_variant",
+        "intron_variant"
+      ],
+      "vep_impact": "LOW",
+      "symbol": "SAA2",
+      "ensembl_feature_id": "ENST00000530400",
+      "feature_type": "Transcript",
+      "strand": -1,
+      "biotype": "protein_coding",
+      "intron": {
+        "rank": 1,
+        "total": 2
+      },
+      "hgvsc": "ENST00000530400.5:c.92-5T>G",
+      "pick": false,
+      "original_canonical": false,
+      "impact_score": 2,
+      "consequence": [
+        "splice region",
+        "intron"
+      ],
+      "canonical": false
+    }
+  ],
+  "max_impact_score": 2,
+  "chromosome": "11"
+}
