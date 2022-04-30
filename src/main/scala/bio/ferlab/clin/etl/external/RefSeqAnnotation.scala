@@ -37,5 +37,15 @@ class RefSeqAnnotation()(implicit configuration: Configuration) extends ETL {
       .repartition(3)
   }
 
+  //    val original = spark.table("refseq_annotation")
+  //
+  //    val regions = original
+  //      .where($"type" === "region" and $"genome" === "chromosome")
+  //      .select("seqId", "chromosome")
+  //
+  //    original
+  //      .drop("chromosome")
+  //      .join(regions, Seq("seqId"))
+
 }
 
