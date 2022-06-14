@@ -5,12 +5,12 @@ import bio.ferlab.datalake.commons.config.{Configuration, DatasetConf}
 import bio.ferlab.datalake.spark3.etl.ETL
 import bio.ferlab.datalake.spark3.implicits.DatasetConfImplicits._
 import org.apache.spark.sql.functions._
-import org.apache.spark.sql.{Column, DataFrame, SparkSession}
+import org.apache.spark.sql.{DataFrame, SparkSession}
 
 import java.sql.Timestamp
 import java.time.LocalDateTime
 
-class Cnv()(implicit configuration: Configuration) extends ETL {
+class CNV()(implicit configuration: Configuration) extends ETL {
 
   override val destination: DatasetConf = conf.getDataset("enriched_cnv")
   val normalized_cnv: DatasetConf = conf.getDataset("normalized_cnv")
@@ -35,36 +35,34 @@ class Cnv()(implicit configuration: Configuration) extends ETL {
     val cnv = data(normalized_cnv.id)
     val refseq = data(refseq_annotation.id)
 
-    val joinedWithGenes = joinWithGenes(cnv, refseq)
+    val joinedWithGenes = joinWithGenes(cnv, refseq, data(normalized_panels.id))
     val joinedWithExons = joinWithExons(joinedWithGenes, refseq)
 
     val groupedCnv = joinedWithExons
-      .select(struct($"cnv.*") as "cnv", struct($"overlap_bases", $"overlap_cnv_ratio", $"overlap_gene_ratio", $"refseq_genes.gene" as "symbol", $"refseq_genes.refseq_id" as "refseq_id") as "gene")
-      .groupBy($"cnv.chromosome", $"cnv.start", $"cnv.reference", $"cnv.alternate", $"gene.refseq_id")
+      .select(struct($"cnv.*") as "cnv", struct($"refseq_genes.gene" as "symbol", $"refseq_genes.refseq_id" as "refseq_id", $"overlap_bases", $"overlap_cnv_ratio", $"overlap_gene_ratio", $"panels") as "gene")
+      .groupBy($"cnv.chromosome", $"cnv.start", $"cnv.reference", $"cnv.alternate", $"cnv.aliquot_id", $"gene.refseq_id")
       .agg(first($"cnv") as "cnv", first($"gene") as "gene", count(lit(1)) as "overlap_exons")
       .select($"cnv", struct($"gene.*", $"overlap_exons") as "gene")
-      .groupBy($"cnv.chromosome", $"cnv.start", $"cnv.reference", $"cnv.alternate")
+      .groupBy($"cnv.chromosome", $"cnv.start", $"cnv.reference", $"cnv.alternate", $"cnv.aliquot_id")
       .agg(first($"cnv") as "cnv", collect_list($"gene") as "genes")
       .select($"cnv.*", $"genes")
       .withColumn("number_genes", size($"genes"))
-
-    //TODO join with panels, be careful with duplicates ...
-//    val panels = data(normalized_panels.id)
-//    groupedCnv
-//      .join(panels.alias("panel"), array_contains($"genes.symbol", panels("symbol")), "left")
-//      .drop("panel.symbol", "panel.version")
     groupedCnv
   }
 
-  def joinWithGenes(cnv: DataFrame, refseq: DataFrame)(implicit sparkSession: SparkSession): DataFrame = {
+  def joinWithGenes(cnv: DataFrame, refseq: DataFrame, panels: DataFrame)(implicit sparkSession: SparkSession): DataFrame = {
     import sparkSession.implicits._
     val refseqGenes = refseq.where($"type" === "gene")
       .select($"seqId" as "refseq_id", $"chromosome", $"start", $"end", $"gene")
+    val joinedPanels = panels.select("symbol", "panels")
+    val refseqGenesWithPanels = refseqGenes
+      .join(joinedPanels, $"gene" === $"symbol", "left")
+      .drop(joinedPanels("symbol"))
     val geneRegion = Region($"refseq_genes.chromosome", $"refseq_genes.start", $"refseq_genes.end")
     val cnvOverlap = when($"refseq_genes.refseq_id".isNull, null)
-      .otherwise(geneRegion.overlap(cnvRegion))
+      .otherwise(cnvRegion.overlap(geneRegion))
     cnv.as("cnv")
-      .join(refseqGenes.alias("refseq_genes"), cnvRegion.isOverlapping(geneRegion), "left")
+      .join(refseqGenesWithPanels.alias("refseq_genes"), cnvRegion.isOverlapping(geneRegion), "left")
       .withColumn("overlap_bases", cnvOverlap)
       .drop("refseq_genes.chromosome", "refseq_genes.start", "refseq_genes.end")
       .withColumn("overlap_gene_ratio", $"overlap_bases" / geneRegion.nbBases)
