@@ -3422,9 +3422,9 @@
     },
     "hgvsc": "ENST00000317037.2:c.332G>A",
     "hgvsp": "ENSP00000322801.2:p.Gly111Glu",
-    "cds_position": 332,
-    "cdna_position": 354,
-    "protein_position": 111,
+    "cds_position": "1000/1083",
+    "cdna_position": "1027/2800",
+    "protein_position": "334/360",
     "amino_acids": {
       "reference": "G",
       "variant": "E"
