@@ -2,13 +2,12 @@ package bio.ferlab.clin.etl.enriched
 
 import bio.ferlab.datalake.commons.config.{Configuration, DatasetConf}
 import bio.ferlab.datalake.spark3.etl.ETLSingleDestination
-import bio.ferlab.datalake.spark3.etl.v2.ETL
 import bio.ferlab.datalake.spark3.implicits.DatasetConfImplicits._
 import bio.ferlab.datalake.spark3.implicits.GenomicImplicits._
 import bio.ferlab.datalake.spark3.implicits.GenomicImplicits.columns.formatted_consequences
 import bio.ferlab.datalake.spark3.utils.DeltaUtils.{compact, vacuum}
 import bio.ferlab.datalake.spark3.utils.RepartitionByColumns
-import org.apache.spark.sql.functions.{coalesce, col, lit, struct}
+import org.apache.spark.sql.functions.{array_distinct, coalesce, col, collect_list, first, flatten, lit, struct}
 import org.apache.spark.sql.types.LongType
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
@@ -53,11 +52,7 @@ class Consequences()(implicit configuration: Configuration) extends ETLSingleDes
     val chromosomes = consequences.select("chromosome").distinct().as[String].collect()
 
     val dbnsfp = data(dbnsfp_original.id).where(col("chromosome").isin(chromosomes: _*))
-
-    val csq = consequences
-      .drop("batch_id", "name", "end", "hgvsg", "variant_class", "ensembl_regulatory_id")
-      .withColumn("consequence", formatted_consequences)
-      .withColumnRenamed("impact", "vep_impact")
+    val csq = groupConsequencesByLocus(consequences)
 
     joinWithDBNSFP(csq, dbnsfp)
       .join(ensembl_mapping, Seq("ensembl_transcript_id", "ensembl_gene_id"), "left")
@@ -71,6 +66,23 @@ class Consequences()(implicit configuration: Configuration) extends ETLSingleDes
   override def publish()(implicit spark: SparkSession): Unit = {
     compact(mainDestination, RepartitionByColumns(Seq("chromosome"), Some(1), Seq(col("start"))))
     vacuum(mainDestination, 2)
+  }
+  
+  def groupConsequencesByLocus(consequences: DataFrame): DataFrame = {
+    
+    val csq = consequences
+      .drop("batch_id", "name", "end", "hgvsg", "variant_class", "ensembl_regulatory_id")
+      .withColumnRenamed("impact", "vep_impact")
+
+    // all csq columns but locus and 'consequences'
+    val csqColumns = csq.drop(locusColumnNames: _*).drop("consequences").columns.map(c => first(c) as c)
+      
+    csq.groupByLocus()
+      .agg(
+        array_distinct(flatten(collect_list("consequences"))) as "consequences",
+        csqColumns: _*  // other columns
+      )
+      .withColumn("consequence", formatted_consequences)
   }
 
   def joinWithDBNSFP(csq: DataFrame, dbnsfp: DataFrame)(implicit spark: SparkSession): DataFrame = {

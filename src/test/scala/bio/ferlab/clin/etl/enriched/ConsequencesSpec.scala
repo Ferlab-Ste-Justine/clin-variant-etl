@@ -22,7 +22,10 @@ class ConsequencesSpec extends AnyFlatSpec with WithSparkSession with WithTestCo
   val normalized_ensembl_mapping: DatasetConf = conf.getDataset("normalized_ensembl_mapping")
 
   private val data = Map(
-    normalized_consequences.id -> Seq(NormalizedConsequences()).toDF(),
+    normalized_consequences.id -> Seq(
+      NormalizedConsequences(consequences = List("another_synonymous_variant")),
+      NormalizedConsequences(`batch_id` = "BAT2"),
+      NormalizedConsequences(`batch_id` = "BAT3")).toDF(),
     dbnsfp_original.id -> Seq(Dbnsfp_originalOutput()).toDF,
     normalized_ensembl_mapping.id -> Seq(EnsemblMappingOutput()).toDF
   )
@@ -48,6 +51,8 @@ class ConsequencesSpec extends AnyFlatSpec with WithSparkSession with WithTestCo
     //ClassGenerator.writeCLassFile("bio.ferlab.clin.model", "EnrichedConsequences", resultDf, "src/test/scala/")
 
     result shouldBe EnrichedConsequences(
+      `consequences` = List("another_synonymous_variant", "synonymous_variant"),
+      `consequence` = List("another synonymous", "synonymous"),
       `predictions` = null,
       `conservations` = null
     )
@@ -58,6 +63,8 @@ class ConsequencesSpec extends AnyFlatSpec with WithSparkSession with WithTestCo
 
     val result = enriched_consequences.read.as[EnrichedConsequences].collect().head
     result shouldBe EnrichedConsequences(
+      `consequences` = List("another_synonymous_variant", "synonymous_variant"),
+      `consequence` = List("another synonymous", "synonymous"),
       `predictions` = null,
       `conservations` = null
     )
