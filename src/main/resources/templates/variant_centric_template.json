@@ -434,7 +434,7 @@
               }
             },
             "is_possibly_hc": {
-              "type": "boolean"
+              "type": "keyword"
             },
             "possibly_hc_complement": {
               "type" : "nested",
