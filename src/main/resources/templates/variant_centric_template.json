@@ -420,7 +420,7 @@
               "type": "keyword"
             },
             "is_hc": {
-              "type": "boolean"
+              "type": "keyword"
             },
             "hc_complement": {
               "type" : "nested",
