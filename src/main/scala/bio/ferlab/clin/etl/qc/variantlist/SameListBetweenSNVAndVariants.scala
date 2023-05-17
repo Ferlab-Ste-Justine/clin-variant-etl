@@ -7,7 +7,7 @@ object SameListBetweenSNVAndVariants extends TestingApp {
   run { spark =>
     import spark.implicits._
 
-    val df_NorSNV = normalized_snv
+    val df_SNV = snv
       .filter($"ad_alt" >= 3)
       .select($"chromosome", $"start", $"reference", $"alternate")
       .dropDuplicates("chromosome", "start", "reference", "alternate")
@@ -18,7 +18,7 @@ object SameListBetweenSNVAndVariants extends TestingApp {
 
     handleErrors(
       shouldBeEmpty(
-        df_NorSNV.join(df_Var, Seq("chromosome", "start", "reference", "alternate"), "left_anti")
+        df_SNV.join(df_Var, Seq("chromosome", "start", "reference", "alternate"), "left_anti")
       )
     )
   }
