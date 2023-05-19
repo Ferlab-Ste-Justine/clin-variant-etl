@@ -6,7 +6,6 @@ import bio.ferlab.datalake.spark3.implicits.DatasetConfImplicits._
 import bio.ferlab.datalake.spark3.implicits.GenomicImplicits.GenomicOperations
 import bio.ferlab.datalake.spark3.implicits.GenomicImplicits.columns.{locus, locusColumnNames}
 import bio.ferlab.datalake.spark3.utils.RepartitionByColumns
-import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
@@ -36,36 +35,30 @@ class SNV()(implicit configuration: Configuration) extends ETLSingleDestination 
       $"aliquot_id",
       $"exomiser_variant_score",
       $"contributing_variant",
-      $"gene_combined_score",
       struct(
+        "gene_combined_score", // put first since sort_array uses first numeric field to sort an array of struct
         "rank",
         "gene_symbol",
-        "gene_combined_score",
         "moi",
         "acmg_classification",
         "acmg_evidence"
       ) as "exomiser_struct"
     )
-
-    val geneCombinedScore = Window.partitionBy(locus :+ $"aliquot_id": _*).orderBy($"gene_combined_score".desc)
-    val exomiserStructListSize = Window.partitionBy(locus :+ $"aliquot_id": _*).orderBy(size($"exomiser_struct_list").desc)
-
-    snv
-      .join(exomiser, locusColumnNames :+ "aliquot_id", "left")
-      .withColumn("exomiser_struct_list", collect_list(when($"contributing_variant", $"exomiser_struct")).over(geneCombinedScore))
-      .withColumn("exomiser_struct_list", first("exomiser_struct_list").over(exomiserStructListSize))
       .groupBy(locus :+ $"aliquot_id": _*)
       .agg(
-        first(struct(snv("*"))) as "snv",
         max($"exomiser_variant_score") as "exomiser_variant_score",
-        first("exomiser_struct_list") as "exomiser_struct_list"
+        sort_array(collect_list(when($"contributing_variant", $"exomiser_struct")), asc = false) as "exomiser_struct_list", // sort by gene_combined_score in desc order
       )
-      .select(
-        $"snv.*",
+      .withColumn("exomiser", $"exomiser_struct_list".getItem(0))
+      .withColumn("exomiser_other_moi", $"exomiser_struct_list".getItem(1))
+      .selectLocus(
+        $"aliquot_id",
         $"exomiser_variant_score",
-        $"exomiser_struct_list".getItem(0) as "exomiser",
-        $"exomiser_struct_list".getItem(1) as "exomiser_other_moi"
+        $"exomiser",
+        $"exomiser_other_moi",
       )
+
+    snv.join(exomiser, locusColumnNames :+ "aliquot_id", "left")
   }
 
   override def defaultRepartition: DataFrame => DataFrame = RepartitionByColumns(columnNames = Seq("chromosome"), n = Some(1), sortColumns = Seq(col("start")))

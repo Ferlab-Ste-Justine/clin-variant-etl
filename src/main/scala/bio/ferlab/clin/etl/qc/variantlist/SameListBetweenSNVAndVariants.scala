@@ -8,7 +8,6 @@ object SameListBetweenSNVAndVariants extends TestingApp {
     import spark.implicits._
 
     val df_SNV = snv
-      .filter($"ad_alt" >= 3)
       .select($"chromosome", $"start", $"reference", $"alternate")
       .dropDuplicates("chromosome", "start", "reference", "alternate")
 
