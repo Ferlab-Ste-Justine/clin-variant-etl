@@ -96,6 +96,7 @@ class Consequences()(implicit configuration: Configuration) extends ETLSingleDes
             $"REVEL_rankscore" as "revel_score",
             $"LRT_converted_rankscore" as "lrt_score",
             $"LRT_pred" as "lrt_pred") as "predictions",
+            $"phyloP100way_vertebrate_rankscore" as "phyloP100way_vertebrate",
           struct($"phyloP17way_primate_rankscore" as "phylo_p17way_primate_score") as "conservations",
         )
 

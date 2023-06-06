@@ -209,6 +209,9 @@
             },
             "vep_impact": {
               "type": "keyword"
+            },
+            "phyloP100way_vertebrate":{
+              "type": "long"
             }
           }
         },
