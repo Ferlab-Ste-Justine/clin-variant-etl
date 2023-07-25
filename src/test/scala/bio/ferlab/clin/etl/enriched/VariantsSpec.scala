@@ -1,6 +1,6 @@
 package bio.ferlab.clin.etl.enriched
 
-import bio.ferlab.clin.model._
+import bio.ferlab.clin.model.{NormalizedVariants, _}
 import bio.ferlab.clin.model.enriched.{DONORS, EXOMISER, EXOMISER_OTHER_MOI, EnrichedSNV, EnrichedSNVSomaticTumorOnly, EnrichedVariant, GENES, GNOMAD, SPLICEAI}
 import bio.ferlab.clin.testutils.{WithSparkSession, WithTestConfig}
 import bio.ferlab.datalake.commons.config._
@@ -524,7 +524,18 @@ class VariantsSpec extends AnyFlatSpec with WithSparkSession with WithTestConfig
             `analysis_display_name` = "Analysis B for the use case 19",
             `affected` =     Frequency(0, 0, 0.0, 0, 0, 0.0, 0),
             `non_affected` = Frequency(1, 2, 0.5, 1, 1, 1.0, 1),
-            `total` =        Frequency(1, 2, 0.5, 1, 1, 1.0, 1))))
+            `total` =        Frequency(1, 2, 0.5, 1, 1, 1.0, 1)))),
+      NormalizedVariants(
+        `batch_id` = "BAT2",
+        `start` = 219,
+        `computed_frequencies` = false, // should be ignored
+        `frequencies_by_analysis` = List(
+          AnalysisCodeFrequencies(
+            `analysis_code` = "UseCase19b",
+            `analysis_display_name` = "Analysis B for the use case 19",
+            `affected` = Frequency(0, 0, 0.0, 0, 0, 0.0, 0),
+            `non_affected` = Frequency(1, 2, 0.5, 1, 1, 1.0, 1),
+            `total` = Frequency(1, 2, 0.5, 1, 1, 1.0, 1))))
     ).toDF()
 
     val resultDf = new Variants().transformSingle(data ++ Map(normalized_variants.id -> variantDf, snv.id -> occurrencesDf, snv_somatic_tumor_only.id -> Seq.empty[EnrichedSNVSomaticTumorOnly].toDF))
@@ -1047,5 +1058,50 @@ class VariantsSpec extends AnyFlatSpec with WithSparkSession with WithTestConfig
         collect_list("temp") as parent
       )
       .select("df.*", parent)
+  }
+
+  "variants job" should "ignore merging frequencies of variants with no computed frequencies" in {
+    import spark.implicits._
+
+    val snvGermline = Seq(
+      EnrichedSNV(`analysis_code` = "UseCase01", `affected_status` = true, `patient_id` = "PA01", `ad_alt` = 30, `batch_id` = "BAT1", `start` = 101),
+      EnrichedSNV(`analysis_code` = "UseCase02", `affected_status` = true, `patient_id` = "PA02", `ad_alt` = 30, `batch_id` = "BAT1", `start` = 102),
+    ).toDF
+
+    val snvSomaticTumorOnly = Seq(
+      EnrichedSNVSomaticTumorOnly(`analysis_code` = "UseCase02", `affected_status` = true, `patient_id` = "PA02", `ad_alt` = 30, `batch_id` = "BAT2", `start` = 102),
+      EnrichedSNVSomaticTumorOnly(`analysis_code` = "UseCase03", `affected_status` = true, `patient_id` = "PA03", `ad_alt` = 30, `batch_id` = "BAT2", `start` = 103),
+    ).toDF
+
+    val variants = Seq(
+      NormalizedVariants(start = 101, `batch_id` = "BAT1", `computed_frequencies` = true,
+        `frequencies_by_analysis` = List(AnalysisCodeFrequencies(`analysis_code` = "UseCase01"))),
+      NormalizedVariants(start = 102, `batch_id` = "BAT1", `computed_frequencies` = true,
+        `frequencies_by_analysis` = List(AnalysisCodeFrequencies(`analysis_code` = "UseCase02"))),
+      NormalizedVariants(start = 102, `batch_id` = "BAT2", `computed_frequencies` = false,
+        `frequencies_by_analysis` = List(AnalysisCodeFrequencies(`analysis_code` = "UseCase02"))),
+      NormalizedVariants(start = 103, `batch_id` = "BAT2", `computed_frequencies` = false,
+        `frequencies_by_analysis` = List(AnalysisCodeFrequencies(`analysis_code` = "UseCase03"))),
+    ).toDF
+
+    val resultDf = new Variants().transformSingle(data ++ Map(
+      snv.id -> snvGermline,
+      snv_somatic_tumor_only.id -> snvSomaticTumorOnly,
+      normalized_variants.id -> variants))
+    val result = resultDf.as[EnrichedVariant].collect()
+
+    result.size shouldBe 3
+
+    result(0).`start` shouldBe 102
+    result(0).`variant_type` shouldBe List("germline", "somatic_tumor_only")
+    result(0).`frequencies_by_analysis`.size shouldBe 1
+
+    result(1).`start` shouldBe 101
+    result(1).`variant_type` shouldBe List("germline")
+    result(1).`frequencies_by_analysis`.size shouldBe 1
+
+    result(2).`start` shouldBe 103
+    result(2).`variant_type` shouldBe List("somatic_tumor_only")
+    result(2).`frequencies_by_analysis` shouldBe null
   }
 }

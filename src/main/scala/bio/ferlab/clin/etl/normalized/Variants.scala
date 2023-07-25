@@ -8,6 +8,7 @@ import bio.ferlab.datalake.spark3.implicits.DatasetConfImplicits.DatasetConfOper
 import bio.ferlab.datalake.spark3.implicits.GenomicImplicits.columns._
 import bio.ferlab.datalake.spark3.implicits.GenomicImplicits.{GenomicOperations, vcf}
 import org.apache.spark.sql.functions._
+import org.apache.spark.sql.types.BooleanType
 import org.apache.spark.sql.{Column, DataFrame, SparkSession, functions}
 import org.slf4j.Logger
 
@@ -67,6 +68,7 @@ class Variants(batchId: String)(implicit configuration: Configuration) extends E
       .withColumn("frequency_RQDM", coalesce(col("frequency_RQDM"), emptyFrequencyRQDM))
       .withColumn("batch_id", lit(batchId))
       .withColumn("created_on", current_timestamp())
+      .withColumn("computed_frequencies", lit(computeFrequencies).cast(BooleanType))
 
     res
   }

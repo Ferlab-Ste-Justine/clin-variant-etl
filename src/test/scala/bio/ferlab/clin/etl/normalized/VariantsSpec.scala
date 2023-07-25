@@ -177,6 +177,7 @@ class VariantsSpec extends AnyFlatSpec with WithSparkSession with WithTestConfig
     val resultDf = results("normalized_variants")
     val result = resultDf.as[NormalizedVariants].collect()
     result.length shouldBe 1
+    result(0).`computed_frequencies` shouldBe false
   }
 
   "variants job" should "not create duplicated variants freqs" in {

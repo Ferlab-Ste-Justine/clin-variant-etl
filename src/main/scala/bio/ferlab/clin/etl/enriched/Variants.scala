@@ -171,6 +171,7 @@ class Variants()(implicit configuration: Configuration) extends ETLSingleDestina
       )
 
     val byAnalysis = variants
+      .filter($"computed_frequencies" === true)
       .withColumn("frequency_by_analysis", explode_outer($"frequencies_by_analysis"))
       .join(pn_an_by_analysis, col("frequency_by_analysis.analysis_code") === col("analysis_code"))
       .groupBy(locus :+ $"frequency_by_analysis.analysis_code": _*)
