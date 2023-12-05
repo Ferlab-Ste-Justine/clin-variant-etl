@@ -25,12 +25,17 @@ case class Franklin(rc: RuntimeETLContext, batchId: String) extends SimpleSingle
                        currentRunDateTime: LocalDateTime): Map[String, DataFrame] = {
     val runtimePath = raw_franklin.path.replace("{{BATCH_ID}}", batchId)
     val runtimeSourceDs = raw_franklin.copy(path = runtimePath)
-    val sourceExists = FileSystemResolver
-      .resolve(conf.getStorage(raw_franklin.storageid).filesystem)
-      .exists(runtimeSourceDs.location)
+    val fs = FileSystemResolver.resolve(conf.getStorage(raw_franklin.storageid).filesystem)
+    val sourceExists = fs.exists(runtimeSourceDs.location)
 
-    val sourceDf = if (sourceExists) runtimeSourceDs.read
-    else Seq.empty[RawFranklin].toDF()
+    val sourceDf = if (sourceExists) {
+      // If there are still .txt files, it means Franklin's analysis is not done. Use empty DF.
+      val files = fs.list(runtimeSourceDs.location, recursive = true)
+      if (files.exists(_.path.endsWith(".txt"))) {
+        log.warn("Franklin analysis is not completed yet. Using empty DataFrame.")
+        Seq.empty[RawFranklin].toDF()
+      } else runtimeSourceDs.read
+    } else Seq.empty[RawFranklin].toDF()
 
     Map(raw_franklin.id -> sourceDf)
   }
