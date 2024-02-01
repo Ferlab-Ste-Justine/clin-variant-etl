@@ -1,8 +1,9 @@
 package bio.ferlab.clin.etl.normalized
 
-import bio.ferlab.clin.etl.model.raw.{SNV_GENOTYPES, SNV_SOMATIC_GENOTYPES, VCF_SNV_Input, VCF_SNV_Somatic_Input}
+import bio.ferlab.clin.etl.model.raw.{SNV_GENOTYPES, SNV_SOMATIC_GENOTYPES, VCF_SNV_Input}
 import bio.ferlab.clin.model.{normalized, _}
 import bio.ferlab.clin.model.normalized.NormalizedVariants
+import bio.ferlab.clin.etl.model.raw.VCF_SNV_Somatic_Input
 import bio.ferlab.clin.testutils.WithTestConfig
 import bio.ferlab.datalake.commons.config.DatasetConf
 import bio.ferlab.datalake.testutils.{CleanUpBeforeAll, CreateDatabasesBeforeAll, SparkSpec, DeprecatedTestETLContext}
@@ -139,7 +140,7 @@ class VariantsSpec extends SparkSpec with WithTestConfig with CreateDatabasesBef
 
   val dataSomaticTumorOnlyWithDuplicates: Map[String, DataFrame] = data ++ Map(
     raw_variant_calling.id -> spark.emptyDataFrame,
-    raw_variant_calling_somatic_tumor_only.id -> Seq(VCF_SNV_Somatic_Input(),VCF_SNV_Somatic_Input(),VCF_SNV_Somatic_Input()).toDF(),
+    raw_variant_calling_somatic_tumor_only.id -> Seq(VCF_SNV_Somatic_Input(), VCF_SNV_Somatic_Input(), VCF_SNV_Somatic_Input()).toDF(),
   )
 
   "variants job" should "transform data in expected format" in {
@@ -157,17 +158,17 @@ class VariantsSpec extends SparkSpec with WithTestConfig with CreateDatabasesBef
 
     val variantWithoutFreqG = result.find(_.`reference` == "G")
     variantWithoutFreqG.map(_.copy(`created_on` = null)) shouldBe Some(normalized.NormalizedVariants(
-      reference= "G",
-      `frequencies_by_analysis` = List(AnalysisCodeFrequencies("MMG", "Maladies musculaires (Panel global)",Frequency(0,4,0.0,0,2,0.0,0),Frequency(0,0,0.0,0,0,0.0,0),Frequency(0,4,0.0,0,2,0.0,0))),
-      `frequency_RQDM` = AnalysisFrequencies(Frequency(0,4,0.0,0,2,0.0,0), Frequency(0, 0, 0, 0, 0, 0, 0), Frequency(0,4,0.0,0,2,0.0,0)),
+      reference = "G",
+      `frequencies_by_analysis` = List(AnalysisCodeFrequencies("MMG", "Maladies musculaires (Panel global)", Frequency(0, 4, 0.0, 0, 2, 0.0, 0), Frequency(0, 0, 0.0, 0, 0, 0.0, 0), Frequency(0, 4, 0.0, 0, 2, 0.0, 0))),
+      `frequency_RQDM` = AnalysisFrequencies(Frequency(0, 4, 0.0, 0, 2, 0.0, 0), Frequency(0, 0, 0, 0, 0, 0, 0), Frequency(0, 4, 0.0, 0, 2, 0.0, 0)),
       `created_on` = null)
     )
 
     val variantWithoutFreqA = result.find(_.`reference` == "A")
     variantWithoutFreqA.map(_.copy(`created_on` = null)) shouldBe Some(normalized.NormalizedVariants(
-      reference= "A",
-      `frequencies_by_analysis` = List(AnalysisCodeFrequencies("MMG","Maladies musculaires (Panel global)",Frequency(0,2,0.0,0,1,0.0,0),Frequency(0,0,0.0,0,0,0.0,0),Frequency(0,2,0.0,0,1,0.0,0))),
-      `frequency_RQDM` = AnalysisFrequencies(Frequency(0,2,0.0,0,1,0.0,0),Frequency(0,0,0.0,0,0,0.0,0),Frequency(0,2,0.0,0,1,0.0,0)),
+      reference = "A",
+      `frequencies_by_analysis` = List(AnalysisCodeFrequencies("MMG", "Maladies musculaires (Panel global)", Frequency(0, 2, 0.0, 0, 1, 0.0, 0), Frequency(0, 0, 0.0, 0, 0, 0.0, 0), Frequency(0, 2, 0.0, 0, 1, 0.0, 0))),
+      `frequency_RQDM` = AnalysisFrequencies(Frequency(0, 2, 0.0, 0, 1, 0.0, 0), Frequency(0, 0, 0.0, 0, 0, 0.0, 0), Frequency(0, 2, 0.0, 0, 1, 0.0, 0)),
       `created_on` = null)
     )
   }
@@ -188,9 +189,9 @@ class VariantsSpec extends SparkSpec with WithTestConfig with CreateDatabasesBef
     resultDf.columns.length shouldBe resultDf.as[NormalizedVariants].columns.length
 
     result(0).`frequencies_by_analysis`.size shouldBe 1
-    result(0).`frequency_RQDM`.total shouldBe Frequency(0,0,0.0,0,0,0.0,0)
-    result(0).`frequency_RQDM`.affected shouldBe Frequency(0,0,0.0,0,0,0.0,0)
-    result(0).`frequency_RQDM`.non_affected shouldBe Frequency(0,0,0.0,0,0,0.0,0)
+    result(0).`frequency_RQDM`.total shouldBe Frequency(0, 0, 0.0, 0, 0, 0.0, 0)
+    result(0).`frequency_RQDM`.affected shouldBe Frequency(0, 0, 0.0, 0, 0, 0.0, 0)
+    result(0).`frequency_RQDM`.non_affected shouldBe Frequency(0, 0, 0.0, 0, 0, 0.0, 0)
   }
 
   "variants job" should "throw exception if no valid VCF" in {
@@ -207,7 +208,7 @@ class VariantsSpec extends SparkSpec with WithTestConfig with CreateDatabasesBef
       VCF_SNV_Input(`contigName` = "chrY"),
       VCF_SNV_Input(`contigName` = "foo")).toDF))
     val result = results("normalized_variants").as[NormalizedVariants].collect()
-    result.length shouldBe > (0)
+    result.length shouldBe >(0)
     result.foreach(r => r.chromosome shouldNot be("foo"))
   }
 
@@ -219,7 +220,7 @@ class VariantsSpec extends SparkSpec with WithTestConfig with CreateDatabasesBef
         VCF_SNV_Somatic_Input(`contigName` = "chrY"),
         VCF_SNV_Somatic_Input(`contigName` = "foo")).toDF))
     val result = results("normalized_variants").as[NormalizedVariants].collect()
-    result.length shouldBe > (0)
+    result.length shouldBe >(0)
     result.foreach(r => r.chromosome shouldNot be("foo"))
   }
 }

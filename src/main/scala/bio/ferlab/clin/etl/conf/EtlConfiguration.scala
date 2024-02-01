@@ -55,7 +55,8 @@ object EtlConfiguration extends App {
     List(
       //s3://clin-{env}-app-files-import/201106_A00516_0169_AHFM3HDSXY/201106_A00516_0169_AHFM3HDSXY.hard-filtered.formatted.norm.VEP.vcf.gz
       DatasetConf("raw_snv"                        , clin_import  , "/{{BATCH_ID}}/*.hard-filtered.formatted.norm.VEP.vcf.gz"           , VCF    , OverWrite),
-      DatasetConf("raw_snv_somatic_tumor_only"     , clin_import  , "/{{BATCH_ID}}/*.dragen.WES_somatic-tumor_only.hard-filtered.norm.VEP.vcf.gz", VCF    , OverWrite),
+      DatasetConf("raw_snv_somatic_tumor_only"     , clin_import  , "/{{BATCH_ID}}/*.dragen.WES_somatic-tumor_only.hard-filtered.norm.VEP.vcf.gz", VCF    , OverWrite, writeoptions = Map("compression" -> "gzip")),
+      DatasetConf("raw_snv_somatic_tumor_normal"   , clin_import  , "/{{BATCH_ID}}/*.vcf.gz", VCF    , OverWrite, writeoptions = Map("compression" -> "gzip")),
       DatasetConf("raw_cnv"                        , clin_import  , "/{{BATCH_ID}}/*[0-9].cnv.vcf.gz"                                   , VCF    , OverWrite),
       DatasetConf("raw_cnv_somatic_tumor_only"     , clin_import  , "/{{BATCH_ID}}/*.dragen.WES_somatic-tumor_only.cnv.vcf.gz"          , VCF    , OverWrite),
       DatasetConf("raw_exomiser"                   , clin_import,   "/{{BATCH_ID}}/*.exomiser.variants.tsv"                           , CSV    , OverWrite, readoptions = tsv_with_headers),
@@ -98,7 +99,7 @@ object EtlConfiguration extends App {
 
       //clinical normalized
       DatasetConf("normalized_snv"                            , clin_datalake, "/normalized/snv"                    , DELTA  , OverWritePartition, partitionby = List("batch_id", "chromosome"), table = Some(TableConf("clin", "normalized_snv"))),
-      DatasetConf("normalized_snv_somatic_tumor_only"         , clin_datalake, "/normalized/snv_somatic_tumor_only" , DELTA  , OverWritePartition, partitionby = List("batch_id", "chromosome"), table = Some(TableConf("clin", "normalized_snv_somatic_tumor_only"))),
+      DatasetConf("normalized_snv_somatic"                    , clin_datalake, "/normalized/snv_somatic"            , DELTA  , OverWritePartition, partitionby = List("batch_id", "chromosome"), table = Some(TableConf("clin", "normalized_snv_somatic"))),
       DatasetConf("normalized_cnv"                            , clin_datalake, "/normalized/cnv"                    , DELTA  , OverWritePartition, partitionby = List("batch_id", "patient_id"), table = Some(TableConf("clin", "normalized_cnv"))),
       DatasetConf("normalized_cnv_somatic_tumor_only"         , clin_datalake, "/normalized/cnv_somatic_tumor_only" , DELTA  , OverWritePartition, partitionby = List("batch_id", "patient_id"), table = Some(TableConf("clin", "normalized_cnv_somatic_tumor_only"))),
       DatasetConf("normalized_variants"            , clin_datalake, "/normalized/variants"               , DELTA  , OverWritePartition, partitionby = List("batch_id", "chromosome"), table = Some(TableConf("clin", "normalized_variants"))),

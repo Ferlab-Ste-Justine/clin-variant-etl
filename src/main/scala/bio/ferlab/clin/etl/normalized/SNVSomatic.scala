@@ -2,7 +2,7 @@ package bio.ferlab.clin.etl.normalized
 
 import bio.ferlab.clin.etl.mainutils.Batch
 import bio.ferlab.clin.etl.model.raw.VCF_SNV_Somatic_Input
-import bio.ferlab.clin.etl.normalized.SNVSomaticTumorOnly.{addRareVariantColumn, getSNV}
+import bio.ferlab.clin.etl.normalized.SNVSomatic.{addRareVariantColumn, getSNV}
 import bio.ferlab.datalake.commons.config.{DatasetConf, RepartitionByColumns, DeprecatedRuntimeETLContext}
 import bio.ferlab.datalake.spark3.implicits.DatasetConfImplicits.DatasetConfOperations
 import bio.ferlab.datalake.spark3.implicits.GenomicImplicits._
@@ -13,15 +13,21 @@ import org.apache.spark.sql.{Column, DataFrame, SparkSession}
 
 import java.time.LocalDateTime
 
-case class SNVSomaticTumorOnly(rc: DeprecatedRuntimeETLContext, batchId: String) extends Occurrences(rc, batchId) {
+case class SNVSomatic(rc: DeprecatedRuntimeETLContext, batchId: String) extends Occurrences(rc, batchId) {
 
-  override val mainDestination: DatasetConf = conf.getDataset("normalized_snv_somatic_tumor_only")
-  override val raw_variant_calling: DatasetConf = conf.getDataset("raw_snv_somatic_tumor_only")
+  override val mainDestination: DatasetConf = conf.getDataset("normalized_snv_somatic")
+  override val raw_variant_calling: DatasetConf = conf.getDataset("raw_snv_somatic_tumor_only") // default source
+  val raw_snv_somatic_tumor_normal: DatasetConf = conf.getDataset("raw_snv_somatic_tumor_normal")
   val rare_variants: DatasetConf = conf.getDataset("enriched_rare_variant")
 
   override def extract(lastRunDateTime: LocalDateTime = minDateTime,
                        currentRunDateTime: LocalDateTime = LocalDateTime.now()): Map[String, DataFrame] = {
-    super.extract(lastRunDateTime, currentRunDateTime) + (rare_variants.id -> rare_variants.read)
+    val data = super.extract(lastRunDateTime, currentRunDateTime) + (rare_variants.id -> rare_variants.read)
+    if (data(raw_variant_calling.id).isEmpty) {
+      data + (raw_variant_calling.id -> vcf(raw_snv_somatic_tumor_normal.location.replace("{{BATCH_ID}}", batchId), None, optional = true))
+    } else {
+      data
+    }
   }
 
   override def transformSingle(data: Map[String, DataFrame],
@@ -86,7 +92,7 @@ case class SNVSomaticTumorOnly(rc: DeprecatedRuntimeETLContext, batchId: String)
   override def replaceWhere: Option[String] = Some(s"batch_id = '$batchId'")
 }
 
-object SNVSomaticTumorOnly {
+object SNVSomatic {
   /**
    * This column is used to adjust the genotype of a variant. It considers the following rules:
    * - If the variant is HOM or HET and the AD_ALT is less than 3, then the genotype is set to -1/-1
@@ -152,7 +158,7 @@ object SNVSomaticTumorOnly {
 
   @main
   def run(rc: DeprecatedRuntimeETLContext, batch: Batch): Unit = {
-    SNVSomaticTumorOnly(rc, batch.id).run()
+    SNVSomatic(rc, batch.id).run()
   }
 
   def main(args: Array[String]): Unit = ParserForMethods(this).runOrThrow(args)
