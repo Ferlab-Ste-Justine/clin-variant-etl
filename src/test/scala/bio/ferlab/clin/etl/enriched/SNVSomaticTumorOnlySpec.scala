@@ -2,7 +2,7 @@ package bio.ferlab.clin.etl.enriched
 
 import bio.ferlab.clin.model._
 import bio.ferlab.clin.model.enriched.{EXOMISER, EXOMISER_OTHER_MOI, EnrichedSNVSomaticTumorOnly}
-import bio.ferlab.clin.model.normalized.{NormalizedExomiser, NormalizedSNVSomaticTumorOnly}
+import bio.ferlab.clin.model.normalized.{NormalizedExomiser, NormalizedSNVSomatic}
 import bio.ferlab.clin.testutils.WithTestConfig
 import bio.ferlab.datalake.commons.config._
 import bio.ferlab.datalake.testutils.{SparkSpec, DeprecatedTestETLContext}
@@ -11,20 +11,20 @@ class SNVSomaticTumorOnlySpec extends SparkSpec with WithTestConfig {
 
   import spark.implicits._
 
-  val normalized_snv: DatasetConf = conf.getDataset("normalized_snv_somatic_tumor_only")
+  val normalized_snv: DatasetConf = conf.getDataset("normalized_snv_somatic")
   val normalized_exomiser: DatasetConf = conf.getDataset("normalized_exomiser")
 
   val job = SNVSomaticTumorOnly(DeprecatedTestETLContext())
 
   it should "enrich data with exomiser" in {
     val snvDf = Seq(
-      NormalizedSNVSomaticTumorOnly(chromosome = "1", start = 1, reference = "T", alternate = "A", aliquot_id = "aliquot1"),
-      NormalizedSNVSomaticTumorOnly(chromosome = "1", start = 2, reference = "A", alternate = "C", aliquot_id = "aliquot1"),
-      NormalizedSNVSomaticTumorOnly(chromosome = "1", start = 3, reference = "C", alternate = "G", aliquot_id = "aliquot1"),
+      NormalizedSNVSomatic(chromosome = "1", start = 1, reference = "T", alternate = "A", aliquot_id = "aliquot1"),
+      NormalizedSNVSomatic(chromosome = "1", start = 2, reference = "A", alternate = "C", aliquot_id = "aliquot1"),
+      NormalizedSNVSomatic(chromosome = "1", start = 3, reference = "C", alternate = "G", aliquot_id = "aliquot1"),
 
-      NormalizedSNVSomaticTumorOnly(chromosome = "1", start = 1, reference = "T", alternate = "A", aliquot_id = "aliquot2"), // no exomiser data
+      NormalizedSNVSomatic(chromosome = "1", start = 1, reference = "T", alternate = "A", aliquot_id = "aliquot2"), // no exomiser data
 
-      NormalizedSNVSomaticTumorOnly(chromosome = "1", start = 1, reference = "T", alternate = "A", aliquot_id = "aliquot3"),
+      NormalizedSNVSomatic(chromosome = "1", start = 1, reference = "T", alternate = "A", aliquot_id = "aliquot3"),
     ).toDF()
 
     val exomiserDf = Seq(
