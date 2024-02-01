@@ -43,7 +43,7 @@ trait TestingApp extends App {
   lazy val normalized_consequences: DataFrame = spark.table("normalized_consequences")
   lazy val normalized_panels: DataFrame = spark.table("normalized_panels")
   lazy val normalized_exomiser: DataFrame = spark.table("normalized_exomiser")
-  lazy val normalized_snv_somatic_tumor_only: DataFrame = spark.table("normalized_snv_somatic_tumor_only")
+  lazy val normalized_snv_somatic: DataFrame = spark.table("normalized_snv_somatic")
   lazy val normalized_cnv_somatic_tumor_only: DataFrame = spark.table("normalized_cnv_somatic_tumor_only")
   lazy val normalized_coverage_by_gene: DataFrame = spark.table("normalized_coverage_by_gene")
   lazy val snv_somatic_tumor_only: DataFrame = spark.table("snv_somatic_tumor_only")

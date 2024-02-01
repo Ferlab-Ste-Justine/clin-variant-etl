@@ -12,7 +12,7 @@ import java.time.LocalDateTime
 case class SNVSomaticTumorOnly(rc: DeprecatedRuntimeETLContext) extends SingleETL(rc) {
 
   override val mainDestination: DatasetConf = conf.getDataset("enriched_snv_somatic_tumor_only")
-  val normalized_snv: DatasetConf = conf.getDataset("normalized_snv_somatic_tumor_only")
+  val normalized_snv: DatasetConf = conf.getDataset("normalized_snv_somatic")
   val normalized_exomiser: DatasetConf = conf.getDataset("normalized_exomiser")
 
   override def extract(lastRunDateTime: LocalDateTime = minDateTime,

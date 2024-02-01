@@ -56,16 +56,16 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CreateDatabasesB
 
   val tebaTaskDf: DataFrame = Seq(
     TaskOutput(
-      batch_id = "BAT1",
+      batch_id = tumorOnlyBatchId,
       `id` = "73254",
       `patient_id` = "PA0001",
       `specimen_id` = "TCGA-02-0001-01B-02D-0182-06",
-      `experiment` = EXPERIMENT(`name` = "BAT1", `sequencing_strategy` = "WXS", `aliquot_id` = "11111"),
+      `experiment` = EXPERIMENT(`name` = tumorOnlyBatchId, `sequencing_strategy` = "WXS", `aliquot_id` = "11111"),
       `service_request_id` = "SRS0001",
       `analysis_code` = "TEBA",
     ),
     TaskOutput(
-      batch_id = "BAT1",
+      batch_id = tumorOnlyBatchId,
       `id` = "73256",
       `patient_id` = "PA0002",
       `specimen_id` = "TCGA-02-0001-01B-02D-0182-06",
@@ -78,7 +78,7 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CreateDatabasesB
       `id` = "73257",
       `patient_id` = "PA0003",
       `specimen_id` = "TCGA-02-0001-01B-02D-0182-06",
-      `experiment` = EXPERIMENT(`name` = "BAT1", `sequencing_strategy` = "WXS", `aliquot_id` = "33333"),
+      `experiment` = EXPERIMENT(`name` = tumorOnlyBatchId, `sequencing_strategy` = "WXS", `aliquot_id` = "33333"),
       `service_request_id` = "SRS0003",
       `analysis_code` = "TEBA",
     ),
