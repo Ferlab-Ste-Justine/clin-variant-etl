@@ -4,6 +4,8 @@
  */
 package bio.ferlab.clin.etl.model.normalized
 
+import bio.ferlab.clin.etl.model.raw.{SOMATIC_EXON, SOMATIC_INTRON}
+
 import java.sql.Timestamp
 
 
@@ -21,17 +23,17 @@ case class NormalizedConsequences(`chromosome`: String = "1",
                                   `ensembl_transcript_id`: String = "ENST00000335137",
                                   `ensembl_regulatory_id`: Option[String] = None,
                                   `feature_type`: String = "Transcript",
-                                  `strand`: Int = 1,
+                                  `strand`: String = "1",
                                   `biotype`: String = "protein_coding",
                                   `variant_class`: String = "SNV",
-                                  `exon`: EXON = EXON(),
-                                  `intron`: INTRON = INTRON(),
+                                  `exon`: SOMATIC_EXON = SOMATIC_EXON(),
+                                  `intron`: SOMATIC_INTRON = SOMATIC_INTRON(),
                                   `hgvsc`: String = "ENST00000335137.4:c.807T>C",
                                   `hgvsp`: String = "ENSP00000334393.3:p.Ser269=",
                                   `hgvsg`: String = "chr1:g.69897T>C",
-                                  `cds_position`: Int = 807,
-                                  `cdna_position`: Int = 843,
-                                  `protein_position`: Int = 269,
+                                  `cds_position`: String = "807",
+                                  `cdna_position`: String = "843",
+                                  `protein_position`: String = "269",
                                   `amino_acids`: AMINO_ACIDS = AMINO_ACIDS(),
                                   `codons`: CODONS = CODONS(),
                                   `original_canonical`: Boolean = true,
