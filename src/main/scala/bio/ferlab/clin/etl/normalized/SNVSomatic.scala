@@ -22,12 +22,7 @@ case class SNVSomatic(rc: DeprecatedRuntimeETLContext, batchId: String) extends 
 
   override def extract(lastRunDateTime: LocalDateTime = minDateTime,
                        currentRunDateTime: LocalDateTime = LocalDateTime.now()): Map[String, DataFrame] = {
-    val data = super.extract(lastRunDateTime, currentRunDateTime) + (rare_variants.id -> rare_variants.read)
-    if (data(raw_variant_calling.id).isEmpty) {
-      data + (raw_variant_calling.id -> vcf(raw_variant_calling.location.replace("{{BATCH_ID}}", batchId), None, optional = true))
-    }
-    data
-
+    super.extract(lastRunDateTime, currentRunDateTime) + (rare_variants.id -> rare_variants.read)
   }
 
   override def transformSingle(data: Map[String, DataFrame],
