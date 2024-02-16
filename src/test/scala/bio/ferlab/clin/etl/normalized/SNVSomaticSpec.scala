@@ -19,8 +19,7 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CreateDatabasesB
   val tumorOnlyBatchId = "BAT1"
   val tumorNormalBatchId = "BAT2"
 
-  val raw_variant_calling: DatasetConf = conf.getDataset("raw_snv_somatic_tumor_only").copy(path = "{{BATCH_ID}}/11111.dragen.WES_somatic-tumor_only.hard-filtered.norm.VEP.vcf") // bat1
-  val raw_snv_somatic_tumor_normal: DatasetConf = conf.getDataset("raw_snv_somatic_tumor_normal").copy(path = "{{BATCH_ID}}/11111.22222.vcf") // bat2
+  val raw_variant_calling: DatasetConf = conf.getDataset("raw_snv")
   val patient: DatasetConf = conf.getDataset("normalized_patient")
   val specimen: DatasetConf = conf.getDataset("normalized_specimen")
   val task: DatasetConf = conf.getDataset("normalized_task")
