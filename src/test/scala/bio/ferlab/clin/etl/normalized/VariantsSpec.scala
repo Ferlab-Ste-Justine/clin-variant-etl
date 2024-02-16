@@ -14,7 +14,6 @@ class VariantsSpec extends SparkSpec with WithTestConfig with CreateDatabasesBef
   import spark.implicits._
 
   val raw_variant_calling: DatasetConf = conf.getDataset("raw_snv")
-  val raw_variant_calling_somatic_tumor_only: DatasetConf = conf.getDataset("raw_snv_somatic_tumor_only")
   val task: DatasetConf = conf.getDataset("normalized_task")
   val service_request: DatasetConf = conf.getDataset("normalized_service_request")
   val clinical_impression: DatasetConf = conf.getDataset("normalized_clinical_impression")
@@ -123,24 +122,21 @@ class VariantsSpec extends SparkSpec with WithTestConfig with CreateDatabasesBef
           SNV_GENOTYPES(`sampleId` = "1", `calls` = List(1, 1), `alleleDepths` = List(0, 30)),
         ))
     ).toDF(),
-    raw_variant_calling_somatic_tumor_only.id -> spark.emptyDataFrame,
     clinical_impression.id -> clinicalImpressionsDf,
     observation.id -> observationsDf,
     task.id -> taskDf,
     service_request.id -> serviceRequestDf
   )
 
-  val dataSomaticTumorOnly: Map[String, DataFrame] = data ++ Map(
-    raw_variant_calling.id -> spark.emptyDataFrame,
-    raw_variant_calling_somatic_tumor_only.id -> Seq(VCF_SNV_Somatic_Input(
+  val dataSomatic: Map[String, DataFrame] = data ++ Map(
+    raw_variant_calling.id -> Seq(VCF_SNV_Somatic_Input(
       `genotypes` = List(
         SNV_SOMATIC_GENOTYPES(`sampleId` = "5", `calls` = List(1, 1)),
       ))).toDF(),
   )
 
-  val dataSomaticTumorOnlyWithDuplicates: Map[String, DataFrame] = data ++ Map(
-    raw_variant_calling.id -> spark.emptyDataFrame,
-    raw_variant_calling_somatic_tumor_only.id -> Seq(VCF_SNV_Somatic_Input(), VCF_SNV_Somatic_Input(), VCF_SNV_Somatic_Input()).toDF(),
+  val dataSomaticWithDuplicates: Map[String, DataFrame] = data ++ Map(
+    raw_variant_calling.id -> Seq(VCF_SNV_Somatic_Input(), VCF_SNV_Somatic_Input(), VCF_SNV_Somatic_Input()).toDF(),
   )
 
   "variants job" should "transform data in expected format" in {
@@ -173,15 +169,15 @@ class VariantsSpec extends SparkSpec with WithTestConfig with CreateDatabasesBef
     )
   }
 
-  "variants job" should "transform data somatic tumor only in expected format" in {
-    val results = job1.transform(dataSomaticTumorOnly)
+  "variants job" should "transform somatic data to expected format" in {
+    val results = job1.transform(dataSomatic)
     val resultDf = results("normalized_variants")
     val result = resultDf.as[NormalizedVariants].collect()
     result.length shouldBe 1
   }
 
   "variants job" should "not create duplicated variants freqs" in {
-    val results = job1.transform(dataSomaticTumorOnlyWithDuplicates)
+    val results = job1.transform(dataSomaticWithDuplicates)
     val resultDf = results("normalized_variants")
     val result = resultDf.as[NormalizedVariants].collect()
 
@@ -196,10 +192,9 @@ class VariantsSpec extends SparkSpec with WithTestConfig with CreateDatabasesBef
 
   "variants job" should "throw exception if no valid VCF" in {
     val exception = intercept[Exception] {
-      job1.transform(data ++ Map(raw_variant_calling.id -> spark.emptyDataFrame,
-        raw_variant_calling_somatic_tumor_only.id -> spark.emptyDataFrame))
+      job1.transform(data ++ Map(raw_variant_calling.id -> spark.emptyDataFrame))
     }
-    exception.getMessage shouldBe "Not valid raw VCF available"
+    exception.getMessage shouldBe "No valid raw VCF available"
   }
 
   "variants job" should "ignore invalid contigName in VCF Germnline" in {
@@ -212,10 +207,9 @@ class VariantsSpec extends SparkSpec with WithTestConfig with CreateDatabasesBef
     result.foreach(r => r.chromosome shouldNot be("foo"))
   }
 
-  "variants job" should "ignore invalid contigName in VCF Somatic tumor only" in {
+  "variants job" should "ignore invalid contigName in VCF Somatic" in {
     val results = job1.transform(data ++ Map(
-      raw_variant_calling.id -> spark.emptyDataFrame,
-      raw_variant_calling_somatic_tumor_only.id -> Seq(
+      raw_variant_calling.id -> Seq(
         VCF_SNV_Somatic_Input(`contigName` = "chr2"),
         VCF_SNV_Somatic_Input(`contigName` = "chrY"),
         VCF_SNV_Somatic_Input(`contigName` = "foo")).toDF))

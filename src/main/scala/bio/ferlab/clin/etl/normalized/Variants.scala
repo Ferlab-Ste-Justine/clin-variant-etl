@@ -12,7 +12,7 @@ import bio.ferlab.datalake.spark3.implicits.GenomicImplicits.columns._
 import bio.ferlab.datalake.spark3.implicits.GenomicImplicits.{GenomicOperations, vcf}
 import mainargs.{ParserForMethods, main}
 import org.apache.spark.sql.functions._
-import org.apache.spark.sql.types.BooleanType
+import org.apache.spark.sql.types.{ArrayType, BooleanType, StructType}
 import org.apache.spark.sql.{Column, DataFrame, functions}
 import org.slf4j.Logger
 
@@ -26,7 +26,6 @@ case class Variants(rc: DeprecatedRuntimeETLContext, batchId: String) extends Si
 
   override val mainDestination: DatasetConf = conf.getDataset("normalized_variants")
   val raw_variant_calling: DatasetConf = conf.getDataset("raw_snv")
-  val raw_variant_calling_somatic_tumor_only: DatasetConf = conf.getDataset("raw_snv_somatic_tumor_only")
   val clinical_impression: DatasetConf = conf.getDataset("normalized_clinical_impression")
   val observation: DatasetConf = conf.getDataset("normalized_observation")
   val task: DatasetConf = conf.getDataset("normalized_task")
@@ -36,7 +35,6 @@ case class Variants(rc: DeprecatedRuntimeETLContext, batchId: String) extends Si
                        currentRunDateTime: LocalDateTime = LocalDateTime.now()): Map[String, DataFrame] = {
     Map(
       raw_variant_calling.id -> vcf(raw_variant_calling.location.replace("{{BATCH_ID}}", batchId), None, optional = true),
-      raw_variant_calling_somatic_tumor_only.id -> vcf(raw_variant_calling_somatic_tumor_only.location.replace("{{BATCH_ID}}", batchId), None, optional = true),
       clinical_impression.id -> clinical_impression.read,
       observation.id -> observation.read,
       task.id -> task.read,
@@ -46,15 +44,24 @@ case class Variants(rc: DeprecatedRuntimeETLContext, batchId: String) extends Si
 
   private def getVCF(data: Map[String, DataFrame]): (DataFrame, String, String, Boolean) = {
 
-    val vcfGermline = data(raw_variant_calling.id)
-    val vcfSomaticTumorOnly = data(raw_variant_calling_somatic_tumor_only.id)
+    val vcf = data(raw_variant_calling.id)
 
-    if (!vcfGermline.isEmpty) {
-      (vcfGermline.where(col("contigName").isin(validContigNames: _*)), "genotype.conditionalQuality", "gq", true)
-    } else if (!vcfSomaticTumorOnly.isEmpty) {
-      (vcfSomaticTumorOnly.where(col("contigName").isin(validContigNames: _*)), "genotype.SQ", "sq", false)
+    if (!vcf.isEmpty) {
+      val filteredVcf = vcf.where(col("contigName").isin(validContigNames: _*))
+      val genotypesIndex = vcf.schema.fieldIndex("genotypes")
+      val genotypesFields = vcf.schema(genotypesIndex).dataType.asInstanceOf[ArrayType].elementType.asInstanceOf[StructType].fieldNames
+
+      if (genotypesFields.contains("conditionalQuality")) {
+        // Germline VCF
+        (filteredVcf, "genotype.conditionalQuality", "gq", true)
+      } else if (genotypesFields.contains("SQ")) {
+        // Somatic VCF
+        (filteredVcf, "genotype.SQ", "sq", false)
+      } else {
+        throw new Exception("No valid raw VCF available")
+      }
     } else {
-      throw new Exception("Not valid raw VCF available")
+      throw new Exception("No valid raw VCF available")
     }
   }
 

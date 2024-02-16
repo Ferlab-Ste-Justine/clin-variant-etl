@@ -16,18 +16,13 @@ import java.time.LocalDateTime
 case class SNVSomatic(rc: DeprecatedRuntimeETLContext, batchId: String) extends Occurrences(rc, batchId) {
 
   override val mainDestination: DatasetConf = conf.getDataset("normalized_snv_somatic")
-  override val raw_variant_calling: DatasetConf = conf.getDataset("raw_snv_somatic_tumor_only") // default source
-  val raw_snv_somatic_tumor_normal: DatasetConf = conf.getDataset("raw_snv_somatic_tumor_normal")
+  override val raw_variant_calling: DatasetConf = conf.getDataset("raw_snv") // default source
+
   val rare_variants: DatasetConf = conf.getDataset("enriched_rare_variant")
 
   override def extract(lastRunDateTime: LocalDateTime = minDateTime,
                        currentRunDateTime: LocalDateTime = LocalDateTime.now()): Map[String, DataFrame] = {
-    val data = super.extract(lastRunDateTime, currentRunDateTime) + (rare_variants.id -> rare_variants.read)
-    if (data(raw_variant_calling.id).isEmpty) {
-      data + (raw_variant_calling.id -> vcf(raw_snv_somatic_tumor_normal.location.replace("{{BATCH_ID}}", batchId), None, optional = true))
-    } else {
-      data
-    }
+    super.extract(lastRunDateTime, currentRunDateTime) + (rare_variants.id -> rare_variants.read)
   }
 
   override def transformSingle(data: Map[String, DataFrame],
