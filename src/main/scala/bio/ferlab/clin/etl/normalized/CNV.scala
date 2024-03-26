@@ -24,10 +24,12 @@ case class CNV(rc: DeprecatedRuntimeETLContext, batchId: String) extends Occurre
 
     val inputVCF = if (data(raw_variant_calling.id).isEmpty) Seq.empty[VCF_CNV_Input].toDF else data(raw_variant_calling.id).where(col("contigName").isin(validContigNames: _*))
 
-    val joinedRelation: DataFrame = getClinicalRelation(data)
+    val clinicalDf: DataFrame = data(enriched_clinical.id)
+      .where($"batch_id" === batchId)
+      .drop("batch_id")
 
     val occurrences = getCNV(inputVCF, batchId)
-      .join(broadcast(joinedRelation), Seq("aliquot_id"), "inner")
+      .join(broadcast(clinicalDf), Seq("aliquot_id"), "inner")
     occurrences
   }
 

@@ -33,10 +33,12 @@ case class SNVSomatic(rc: DeprecatedRuntimeETLContext, batchId: String) extends 
 
     val inputVCF = if (data(raw_variant_calling.id).isEmpty) Seq.empty[VCF_SNV_Somatic_Input].toDF else data(raw_variant_calling.id).where(col("contigName").isin(validContigNames: _*))
 
-    val joinedRelation: DataFrame = getClinicalRelation(data)
+    val clinicalDf: DataFrame = data(enriched_clinical.id)
+      .where($"batch_id" === batchId)
+      .drop("batch_id")
 
     val occurrences = getSNV(inputVCF, batchId)
-      .join(broadcast(joinedRelation), Seq("aliquot_id"), "inner")
+      .join(broadcast(clinicalDf), Seq("aliquot_id"), "inner")
       .withColumn("participant_id", col("patient_id"))
       .withColumn("family_info", familyInfo(
         Seq(
