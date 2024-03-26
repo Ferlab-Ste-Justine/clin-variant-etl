@@ -1,6 +1,6 @@
 package bio.ferlab.clin.etl.enriched
 
-import bio.ferlab.clin.model.enriched.EnrichedSNVSomatic
+import bio.ferlab.clin.model.enriched.{EnrichedClinical, EnrichedSNVSomatic}
 import bio.ferlab.clin.model.normalized.NormalizedSNVSomatic
 import bio.ferlab.clin.testutils.WithTestConfig
 import bio.ferlab.datalake.commons.config._
@@ -13,8 +13,16 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CleanUpBeforeEac
 
   val normalized_snv_somatic: DatasetConf = conf.getDataset("normalized_snv_somatic")
   val enriched_snv_somatic: DatasetConf = conf.getDataset("enriched_snv_somatic")
+  val enriched_clinical: DatasetConf = conf.getDataset("enriched_clinical")
 
   val job: Option[String] => SNVSomatic = batch => SNVSomatic(DeprecatedTestETLContext(), batch)
+
+  val existingClinicalData = Seq(
+    EnrichedClinical(`batch_id` = "BATCH1", `analysis_service_request_id` = "SRA1", `bioinfo_analysis_code` = "TEBA", `aliquot_id` = "1"),
+    EnrichedClinical(`batch_id` = "BATCH1", `analysis_service_request_id` = "SRA2", `bioinfo_analysis_code` = "TEBA", `aliquot_id` = "1"),
+    EnrichedClinical(`batch_id` = "BATCH1", `analysis_service_request_id` = "SRA3", `bioinfo_analysis_code` = "TEBA", `aliquot_id` = "1"),
+    EnrichedClinical(`batch_id` = "BATCH2", `analysis_service_request_id` = "SRA4", `bioinfo_analysis_code` = "TEBA", `aliquot_id` = "1"),
+  )
 
   val existingNormalizedData = Seq(
     NormalizedSNVSomatic(aliquot_id = "1", batch_id = "BATCH1", analysis_service_request_id = "SRA1", bioinfo_analysis_code = "TEBA"),
@@ -30,7 +38,7 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CleanUpBeforeEac
     EnrichedSNVSomatic(aliquot_id = "4", batch_id = "BATCH2", analysis_service_request_id = "SRA4", bioinfo_analysis_code = "TEBA")
   )
 
-  override val dsToClean: List[DatasetConf] = List(normalized_snv_somatic, enriched_snv_somatic)
+  override val dsToClean: List[DatasetConf] = List(normalized_snv_somatic, enriched_snv_somatic, enriched_clinical)
 
   override def beforeEach(): Unit = {
     super.beforeEach()
@@ -41,14 +49,23 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CleanUpBeforeEac
   }
 
   "extract" should "only return current analyses when no past analyses exist" in {
-    val currentBatch = Seq(
+    val currentBatchClinicalData = Seq(
+      EnrichedClinical(`batch_id` = "BATCH3", `analysis_service_request_id` = "SRA5", `bioinfo_analysis_code` = "TEBA", `aliquot_id` = "5"),
+      EnrichedClinical(`batch_id` = "BATCH3", `analysis_service_request_id` = "SRA6", `bioinfo_analysis_code` = "TEBA", `aliquot_id` = "6"),
+      EnrichedClinical(`batch_id` = "BATCH3", `analysis_service_request_id` = "SRA7", `bioinfo_analysis_code` = "TEBA", `aliquot_id` = "7"),
+    )
+    val clinicalDf = (existingClinicalData ++ currentBatchClinicalData).toDF()
+    LoadResolver
+      .write
+      .apply(enriched_clinical.format, enriched_clinical.loadtype)
+      .apply(enriched_clinical, clinicalDf)
+
+    val currentBatchNormalizedData = Seq(
       NormalizedSNVSomatic(aliquot_id = "5", batch_id = "BATCH3", analysis_service_request_id = "SRA5", bioinfo_analysis_code = "TEBA"),
       NormalizedSNVSomatic(aliquot_id = "6", batch_id = "BATCH3", analysis_service_request_id = "SRA6", bioinfo_analysis_code = "TEBA"),
       NormalizedSNVSomatic(aliquot_id = "7", batch_id = "BATCH3", analysis_service_request_id = "SRA7", bioinfo_analysis_code = "TEBA"),
     )
-
-    val normalizedSnvSomaticDf = (existingNormalizedData ++ currentBatch).toDF()
-
+    val normalizedSnvSomaticDf = (existingNormalizedData ++ currentBatchNormalizedData).toDF()
     LoadResolver
       .write
       .apply(normalized_snv_somatic.format, normalized_snv_somatic.loadtype)
@@ -58,7 +75,7 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CleanUpBeforeEac
 
     result(normalized_snv_somatic.id)
       .as[NormalizedSNVSomatic]
-      .collect() should contain theSameElementsAs currentBatch
+      .collect() should contain theSameElementsAs currentBatchNormalizedData
 
     result(enriched_snv_somatic.id)
       .as[EnrichedSNVSomatic]
@@ -66,13 +83,23 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CleanUpBeforeEac
   }
 
   "extract" should "return current and past analyses when the latter exists" in {
-    val currentBatch = Seq(
+    val currentBatchClinicalData = Seq(
+      EnrichedClinical(`batch_id` = "BATCH3", `analysis_service_request_id` = "SRA1", `bioinfo_analysis_code` = "TNEBA", `aliquot_id` = "1"),
+      EnrichedClinical(`batch_id` = "BATCH3", `analysis_service_request_id` = "SRA2", `bioinfo_analysis_code` = "TNEBA", `aliquot_id` = "2"),
+      EnrichedClinical(`batch_id` = "BATCH3", `analysis_service_request_id` = "SRA5", `bioinfo_analysis_code` = "TEBA", `aliquot_id` = "5"),
+    )
+    val clinicalDf = (existingClinicalData ++ currentBatchClinicalData).toDF()
+    LoadResolver
+      .write
+      .apply(enriched_clinical.format, enriched_clinical.loadtype)
+      .apply(enriched_clinical, clinicalDf)
+
+    val currentBatchNormalizedData = Seq(
       NormalizedSNVSomatic(aliquot_id = "1", batch_id = "BATCH3", analysis_service_request_id = "SRA1", bioinfo_analysis_code = "TNEBA"),
       NormalizedSNVSomatic(aliquot_id = "2", batch_id = "BATCH3", analysis_service_request_id = "SRA2", bioinfo_analysis_code = "TNEBA"),
       NormalizedSNVSomatic(aliquot_id = "5", batch_id = "BATCH3", analysis_service_request_id = "SRA5", bioinfo_analysis_code = "TEBA")
     )
-    val normalizedSnvSomaticDf = (existingNormalizedData ++ currentBatch).toDF()
-
+    val normalizedSnvSomaticDf = (existingNormalizedData ++ currentBatchNormalizedData).toDF()
     LoadResolver
       .write
       .apply(normalized_snv_somatic.format, normalized_snv_somatic.loadtype)
@@ -82,7 +109,7 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CleanUpBeforeEac
 
     result(normalized_snv_somatic.id)
       .as[NormalizedSNVSomatic]
-      .collect() should contain theSameElementsAs currentBatch
+      .collect() should contain theSameElementsAs currentBatchNormalizedData
 
     result(enriched_snv_somatic.id)
       .as[EnrichedSNVSomatic]
@@ -93,6 +120,10 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CleanUpBeforeEac
   }
 
   "extract" should "return all past analyses when no batch id is submitted" in {
+    LoadResolver
+      .write
+      .apply(enriched_clinical.format, enriched_clinical.loadtype)
+      .apply(enriched_clinical, existingClinicalData.toDF())
     LoadResolver
       .write
       .apply(normalized_snv_somatic.format, normalized_snv_somatic.loadtype)

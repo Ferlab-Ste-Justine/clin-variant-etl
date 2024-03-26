@@ -2,11 +2,12 @@ package bio.ferlab.clin.etl.normalized
 
 import bio.ferlab.clin.etl.model.raw.{SNV_SOMATIC_GENOTYPES, VCF_SNV_Somatic_Input}
 import bio.ferlab.clin.model._
+import bio.ferlab.clin.model.enriched.EnrichedClinical
 import bio.ferlab.clin.model.normalized.NormalizedSNVSomatic
 import bio.ferlab.clin.testutils.WithTestConfig
 import bio.ferlab.datalake.commons.config.{DatasetConf, LoadType}
 import bio.ferlab.datalake.spark3.loader.LoadResolver
-import bio.ferlab.datalake.testutils.{ClassGenerator, CreateDatabasesBeforeAll, DeprecatedTestETLContext, SparkSpec}
+import bio.ferlab.datalake.testutils.{CreateDatabasesBeforeAll, DeprecatedTestETLContext, SparkSpec}
 import org.apache.spark.sql.DataFrame
 
 import java.sql.Date
@@ -20,13 +21,7 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CreateDatabasesB
   val tumorNormalBatchId = "BAT2"
 
   val raw_variant_calling: DatasetConf = conf.getDataset("raw_snv")
-  val patient: DatasetConf = conf.getDataset("normalized_patient")
-  val specimen: DatasetConf = conf.getDataset("normalized_specimen")
-  val task: DatasetConf = conf.getDataset("normalized_task")
-  val service_request: DatasetConf = conf.getDataset("normalized_service_request")
-  val family: DatasetConf = conf.getDataset("normalized_family")
-  val clinical_impression: DatasetConf = conf.getDataset("normalized_clinical_impression")
-  val observation: DatasetConf = conf.getDataset("normalized_observation")
+  val enriched_clinical: DatasetConf = conf.getDataset("enriched_clinical")
   val rare_variants: DatasetConf = conf.getDataset("enriched_rare_variant")
 
   override val dbToCreate: List[String] = List("clin")
@@ -34,111 +29,20 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CreateDatabasesB
   val tumorOnlyJob = SNVSomatic(DeprecatedTestETLContext(), tumorOnlyBatchId)
   val tumorNormalJob = SNVSomatic(DeprecatedTestETLContext(), tumorNormalBatchId)
 
-  val patientDf: DataFrame = Seq(
-    PatientOutput(
-      `id` = "PA0001",
-      `gender` = "male",
-      `practitioner_role_id` = "PPR00101",
-      `organization_id` = Some("OR00201")
-    ),
-    PatientOutput(
-      `id` = "PA0002",
-      `practitioner_role_id` = "PPR00101",
-      `gender` = "male"
-    ),
-    PatientOutput(
-      `id` = "PA0003",
-      `practitioner_role_id` = "PPR00101",
-      `gender` = "female"
-    )
-  ).toDF()
+  val clinicalDf: DataFrame = Seq(
+    // TEBA (tumor only analysis)
+    EnrichedClinical(`patient_id` = "PA0001", `analysis_service_request_id` = "SRA0001", `service_request_id` = "SRS0001", `batch_id` = tumorOnlyBatchId, `aliquot_id` = "11111", `is_proband` = true, `gender` = "Male", `bioinfo_analysis_code` = "TEBA", `analysis_display_name` = Some("Maladies musculaires (Panel global)"), `affected_status` = true, `affected_status_code` = "affected", `sample_id` = "SA_001", `specimen_id` = "SP_001", `family_id` = Some("FM00001"), `mother_id` = Some("PA0003"), `father_id` = Some("PA0002"), `mother_aliquot_id` = Some("33333"), `father_aliquot_id` = Some("22222")),
+    EnrichedClinical(`patient_id` = "PA0002", `analysis_service_request_id` = "SRA0001", `service_request_id` = "SRS0002", `batch_id` = tumorOnlyBatchId, `aliquot_id` = "22222", `is_proband` = false, `gender` = "Male", `bioinfo_analysis_code` = "TEBA", `analysis_display_name` = Some("Maladies musculaires (Panel global)"), `affected_status` = false, `affected_status_code` = "not_affected", `sample_id` = "SA_002", `specimen_id` = "SP_002", `family_id` = Some("FM00001"), `mother_id` = None, `father_id` = None, `mother_aliquot_id` = None, `father_aliquot_id` = None),
+    EnrichedClinical(`patient_id` = "PA0003", `analysis_service_request_id` = "SRA0001", `service_request_id` = "SRS0003", `batch_id` = tumorOnlyBatchId, `aliquot_id` = "33333", `is_proband` = false, `gender` = "Female", `bioinfo_analysis_code` = "TEBA", `analysis_display_name` = Some("Maladies musculaires (Panel global)"), `affected_status` = true, `affected_status_code` = "affected", `sample_id` = "SA_003", `specimen_id` = "SP_003", `family_id` = Some("FM00001"), `mother_id` = None, `father_id` = None, `mother_aliquot_id` = None, `father_aliquot_id` = None),
 
-  val tebaTaskDf: DataFrame = Seq(
-    TaskOutput(
-      batch_id = tumorOnlyBatchId,
-      `id` = "73254",
-      `patient_id` = "PA0001",
-      `specimen_id` = "TCGA-02-0001-01B-02D-0182-06",
-      `experiment` = EXPERIMENT(`name` = tumorOnlyBatchId, `sequencing_strategy` = "WXS", `aliquot_id` = "11111"),
-      `service_request_id` = "SRS0001",
-      `analysis_code` = "TEBA",
-    ),
-    TaskOutput(
-      batch_id = tumorOnlyBatchId,
-      `id` = "73256",
-      `patient_id` = "PA0002",
-      `specimen_id` = "TCGA-02-0001-01B-02D-0182-06",
-      `experiment` = EXPERIMENT(`name` = tumorOnlyBatchId, `sequencing_strategy` = "WXS", `aliquot_id` = "22222"),
-      `service_request_id` = "SRS0002",
-      `analysis_code` = "TEBA",
-    ),
-    TaskOutput(
-      batch_id = tumorOnlyBatchId,
-      `id` = "73257",
-      `patient_id` = "PA0003",
-      `specimen_id` = "TCGA-02-0001-01B-02D-0182-06",
-      `experiment` = EXPERIMENT(`name` = tumorOnlyBatchId, `sequencing_strategy` = "WXS", `aliquot_id` = "33333"),
-      `service_request_id` = "SRS0003",
-      `analysis_code` = "TEBA",
-    ),
-    TaskOutput(
-      batch_id = "BAT1",
-      `id` = "73255",
-      `patient_id` = "PA00095",
-      `specimen_id` = "TCGA-02-0001-01B-02D-0182-06",
-      `experiment` = EXPERIMENT(`name` = "BAT1", `sequencing_strategy` = "WXS", `aliquot_id` = "11111"),
-      `service_request_id` = "SRS0099",
-      `analysis_code` = "TEBA",
-    )
-  ).toDF
-
-  val clinicalImpressionsDf: DataFrame = Seq(
-    ClinicalImpressionOutput(id = "CI0001", `patient_id` = "PA0001", observations = List("OB0001", "OB0099")),
-    ClinicalImpressionOutput(id = "CI0002", `patient_id` = "PA0002", observations = List("OB0002")),
-    ClinicalImpressionOutput(id = "CI0003", `patient_id` = "PA0003", observations = List("OB0003"))
+    // TNEBA (tumor normal analysis)
+    EnrichedClinical(`patient_id` = "PA0001", `analysis_service_request_id` = "SRA0001", `service_request_id` = "SRS0001", `batch_id` = tumorNormalBatchId, `aliquot_id` = "11111", `is_proband` = true, `gender` = "Male", `bioinfo_analysis_code` = "TNEBA", `analysis_display_name` = Some("Maladies musculaires (Panel global)"), `affected_status` = true, `affected_status_code` = "affected", `sample_id` = "SA_001", `specimen_id` = "SP_001", `family_id` = Some("FM00001"), `mother_id` = Some("PA0003"), `father_id` = Some("PA0002"), `mother_aliquot_id` = Some("33333"), `father_aliquot_id` = Some("22222")),
+    EnrichedClinical(`patient_id` = "PA0002", `analysis_service_request_id` = "SRA0001", `service_request_id` = "SRS0002", `batch_id` = tumorNormalBatchId, `aliquot_id` = "22222", `is_proband` = false, `gender` = "Male", `bioinfo_analysis_code` = "TNEBA", `analysis_display_name` = Some("Maladies musculaires (Panel global)"), `affected_status` = false, `affected_status_code` = "not_affected", `sample_id` = "SA_002", `specimen_id` = "SP_002", `family_id` = Some("FM00001"), `mother_id` = None, `father_id` = None, `mother_aliquot_id` = None, `father_aliquot_id` = None),
+    EnrichedClinical(`patient_id` = "PA0003", `analysis_service_request_id` = "SRA0001", `service_request_id` = "SRS0003", `batch_id` = tumorNormalBatchId, `aliquot_id` = "33333", `is_proband` = false, `gender` = "Female", `bioinfo_analysis_code` = "TNEBA", `analysis_display_name` = Some("Maladies musculaires (Panel global)"), `affected_status` = true, `affected_status_code` = "affected", `sample_id` = "SA_003", `specimen_id` = "SP_003", `family_id` = Some("FM00001"), `mother_id` = None, `father_id` = None, `mother_aliquot_id` = None, `father_aliquot_id` = None),
   ).toDF()
-
-  val observationsDf: DataFrame = Seq(
-    ObservationOutput(id = "OB0001", patient_id = "PA0001", `observation_code` = "DSTA", `interpretation_code` = "affected"),
-    ObservationOutput(id = "OB0099", patient_id = "PA0001", `observation_code` = "OTHER", `interpretation_code` = "affected"),
-    ObservationOutput(id = "OB0002", patient_id = "PA0002", `observation_code` = "DSTA", `interpretation_code` = "not_affected"),
-    ObservationOutput(id = "OB0003", patient_id = "PA0003", `observation_code` = "DSTA", `interpretation_code` = "affected"),
-  ).toDF()
-  val serviceRequestDf: DataFrame = Seq(
-    ServiceRequestOutput(service_request_type = "analysis", `id` = "SRA0001", `patient_id` = "PA0001",
-      family = Some(FAMILY(mother = Some("PA0003"), father = Some("PA0002"))),
-      family_id = Some("FM00001"),
-      `clinical_impressions` = Some(Seq("CI0001", "CI0002", "CI0003")),
-      `service_request_description` = Some("Maladies musculaires (Panel global)")
-    ),
-    ServiceRequestOutput(service_request_type = "sequencing", `id` = "SRS0001", `patient_id` = "PA0001", analysis_service_request_id = Some("SRA0001"), `service_request_description` = Some("Maladies musculaires (Panel global)")),
-    ServiceRequestOutput(service_request_type = "sequencing", `id` = "SRS0002", `patient_id` = "PA0002", analysis_service_request_id = Some("SRA0001"), `service_request_description` = Some("Maladies musculaires (Panel global)")),
-    ServiceRequestOutput(service_request_type = "sequencing", `id` = "SRS0003", `patient_id` = "PA0003", analysis_service_request_id = Some("SRA0001"), `service_request_description` = Some("Maladies musculaires (Panel global)"))
-  ).toDF()
-  val familyDf: DataFrame = Seq(
-    FamilyOutput(analysis_service_request_id = "SRA0001", patient_id = "PA0001", family = Some(FAMILY(mother = Some("PA0003"), father = Some("PA0002"))), family_id = Some("FM00001")),
-    FamilyOutput(analysis_service_request_id = "SRA0001", patient_id = "PA0002", family = None, family_id = Some("FM00001")),
-    FamilyOutput(analysis_service_request_id = "SRA0001", patient_id = "PA0003", family = None, family_id = Some("FM00001"))
-
-  ).toDF()
-
-  val specimenDf: DataFrame = Seq(
-    SpecimenOutput(`patient_id` = "PA0001", `service_request_id` = "SRS0001", `sample_id` = Some("SA_001"), `specimen_id` = None),
-    SpecimenOutput(`patient_id` = "PA0001", `service_request_id` = "SRS0001", `sample_id` = None, `specimen_id` = Some("SP_001")),
-    SpecimenOutput(`patient_id` = "PA0002", `service_request_id` = "SRS0002", `sample_id` = Some("SA_002"), `specimen_id` = None),
-    SpecimenOutput(`patient_id` = "PA0002", `service_request_id` = "SRS0002", `sample_id` = None, `specimen_id` = Some("SP_002")),
-    SpecimenOutput(`patient_id` = "PA0003", `service_request_id` = "SRS0003", `sample_id` = Some("SA_003"), `specimen_id` = None),
-    SpecimenOutput(`patient_id` = "PA0003", `service_request_id` = "SRS0003", `sample_id` = None, `specimen_id` = Some("SP_003")),
-  ).toDF
 
   val data: Map[String, DataFrame] = Map(
-    patient.id -> patientDf,
-    clinical_impression.id -> clinicalImpressionsDf,
-    observation.id -> observationsDf,
-    task.id -> tebaTaskDf,
-    service_request.id -> serviceRequestDf,
-    specimen.id -> specimenDf,
-    family.id -> familyDf,
+    enriched_clinical.id -> clinicalDf,
     rare_variants.id -> Seq(RareVariant()).toDF()
   )
 
@@ -189,6 +93,7 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CreateDatabasesB
       analysis_code = "MMG",
       specimen_id = "SP_001",
       sample_id = "SA_001",
+      organization_id = "CHUSJ",
       hc_complement = List(),
       possibly_hc_complement = List(),
       service_request_id = "SRS0001",
@@ -230,46 +135,7 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CreateDatabasesB
   }
 
   it should "transform somatic tumor_normal data to expected format" in {
-    val tnebaTaskDf: DataFrame = Seq(
-      TaskOutput(
-        batch_id = tumorNormalBatchId,
-        `id` = "73254",
-        `patient_id` = "PA0001",
-        `specimen_id` = "TCGA-02-0001-01B-02D-0182-06",
-        `experiment` = EXPERIMENT(`name` = tumorNormalBatchId, `sequencing_strategy` = "WXS", `aliquot_id` = "11111"),
-        `service_request_id` = "SRS0001",
-        `analysis_code` = "TNEBA",
-      ),
-      TaskOutput(
-        batch_id = tumorNormalBatchId,
-        `id` = "73256",
-        `patient_id` = "PA0002",
-        `specimen_id` = "TCGA-02-0001-01B-02D-0182-06",
-        `experiment` = EXPERIMENT(`name` = tumorNormalBatchId, `sequencing_strategy` = "WXS", `aliquot_id` = "22222"),
-        `service_request_id` = "SRS0002",
-        `analysis_code` = "TNEBA",
-      ),
-      TaskOutput(
-        batch_id = tumorNormalBatchId,
-        `id` = "73257",
-        `patient_id` = "PA0003",
-        `specimen_id` = "TCGA-02-0001-01B-02D-0182-06",
-        `experiment` = EXPERIMENT(`name` = tumorNormalBatchId, `sequencing_strategy` = "WXS", `aliquot_id` = "33333"),
-        `service_request_id` = "SRS0003",
-        `analysis_code` = "TNEBA",
-      ),
-      TaskOutput(
-        batch_id = tumorNormalBatchId,
-        `id` = "73255",
-        `patient_id` = "PA00095",
-        `specimen_id` = "TCGA-02-0001-01B-02D-0182-06",
-        `experiment` = EXPERIMENT(`name` = tumorNormalBatchId, `sequencing_strategy` = "WXS", `aliquot_id` = "11111"),
-        `service_request_id` = "SRS0099",
-        `analysis_code` = "TNEBA",
-      )
-    ).toDF
-
-    val results = tumorNormalJob.transform(dataWithVariantCalling + (task.id -> tnebaTaskDf))
+    val results = tumorNormalJob.transform(dataWithVariantCalling)
     val result = results("normalized_snv_somatic").as[NormalizedSNVSomatic].collect()
 
     result.length shouldBe 2
@@ -278,6 +144,7 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CreateDatabasesB
       analysis_code = "MMG",
       specimen_id = "SP_001",
       sample_id = "SA_001",
+      organization_id = "CHUSJ",
       hc_complement = List(),
       possibly_hc_complement = List(),
       service_request_id = "SRS0001",
@@ -301,6 +168,8 @@ class SNVSomaticSpec extends SparkSpec with WithTestConfig with CreateDatabasesB
       is_proband = false,
       mother_id = null,
       father_id = null,
+      mother_aliquot_id = None,
+      father_aliquot_id = None,
       mother_calls = None,
       father_calls = None,
       mother_affected_status = None,

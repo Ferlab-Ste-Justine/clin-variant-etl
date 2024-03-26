@@ -16,6 +16,7 @@ case class SNVSomatic(rc: DeprecatedRuntimeETLContext, batchId: Option[String]) 
 
   override val mainDestination: DatasetConf = conf.getDataset("enriched_snv_somatic")
   val normalized_snv_somatic: DatasetConf = conf.getDataset("normalized_snv_somatic")
+  val enriched_clinical: DatasetConf = conf.getDataset("enriched_clinical")
 
   override def extract(lastRunDateTime: LocalDateTime = minDateTime,
                        currentRunDateTime: LocalDateTime = LocalDateTime.now()): Map[String, DataFrame] = {
@@ -25,7 +26,7 @@ case class SNVSomatic(rc: DeprecatedRuntimeETLContext, batchId: Option[String]) 
       // If a batch id was submitted, only process the specified id
       case Some(id) =>
         val normalizedSnvSomaticDf = normalized_snv_somatic.read.where($"batch_id" === id)
-        val analysisServiceRequestIds: Seq[String] = normalizedSnvSomaticDf
+        val analysisServiceRequestIds: Seq[String] = enriched_clinical.read.where($"batch_id" === id)
           .select("analysis_service_request_id")
           .distinct()
           .as[String]
@@ -73,7 +74,7 @@ case class SNVSomatic(rc: DeprecatedRuntimeETLContext, batchId: Option[String]) 
       .join(withAllAnalysesDf, locusColumnNames :+ "aliquot_id", "inner")
   }
 
-  override def defaultRepartition: DataFrame => DataFrame = RepartitionByColumns(columnNames = Seq("analysis_service_request_id"), n = Some(1))
+  override def defaultRepartition: DataFrame => DataFrame = RepartitionByColumns(columnNames = Seq("analysis_service_request_id", "chromosome"), n = Some(1))
 }
 
 object SNVSomatic {

@@ -1,12 +1,12 @@
 package bio.ferlab.clin.etl.normalized
 
-import bio.ferlab.clin.etl.model.raw.{SNV_GENOTYPES, SNV_SOMATIC_GENOTYPES, VCF_SNV_Input}
-import bio.ferlab.clin.model.{normalized, _}
+import bio.ferlab.clin.etl.model.raw.{SNV_GENOTYPES, SNV_SOMATIC_GENOTYPES, VCF_SNV_Input, VCF_SNV_Somatic_Input}
+import bio.ferlab.clin.model.enriched.EnrichedClinical
 import bio.ferlab.clin.model.normalized.NormalizedVariants
-import bio.ferlab.clin.etl.model.raw.VCF_SNV_Somatic_Input
+import bio.ferlab.clin.model._
 import bio.ferlab.clin.testutils.WithTestConfig
 import bio.ferlab.datalake.commons.config.DatasetConf
-import bio.ferlab.datalake.testutils.{CleanUpBeforeAll, CreateDatabasesBeforeAll, SparkSpec, DeprecatedTestETLContext}
+import bio.ferlab.datalake.testutils.{CleanUpBeforeAll, CreateDatabasesBeforeAll, DeprecatedTestETLContext, SparkSpec}
 import org.apache.spark.sql.DataFrame
 
 class VariantsSpec extends SparkSpec with WithTestConfig with CreateDatabasesBeforeAll with CleanUpBeforeAll {
@@ -14,84 +14,16 @@ class VariantsSpec extends SparkSpec with WithTestConfig with CreateDatabasesBef
   import spark.implicits._
 
   val raw_variant_calling: DatasetConf = conf.getDataset("raw_snv")
-  val task: DatasetConf = conf.getDataset("normalized_task")
-  val service_request: DatasetConf = conf.getDataset("normalized_service_request")
-  val clinical_impression: DatasetConf = conf.getDataset("normalized_clinical_impression")
-  val observation: DatasetConf = conf.getDataset("normalized_observation")
+  val enriched_clinical: DatasetConf = conf.getDataset("enriched_clinical")
 
-  val clinicalImpressionsDf: DataFrame = Seq(
-    ClinicalImpressionOutput(id = "CI0001", `patient_id` = "PA0001", observations = List("OB0001", "OB0099")),
-    ClinicalImpressionOutput(id = "CI0002", `patient_id` = "PA0002", observations = List("OB0002")),
-    ClinicalImpressionOutput(id = "CI0003", `patient_id` = "PA0003", observations = List("OB0003")),
-    ClinicalImpressionOutput(id = "CI0004", `patient_id` = "PA0004", observations = List("OB0004"))
+  val clinicalDf: DataFrame = Seq(
+    EnrichedClinical(`patient_id` = "PA0001", `analysis_service_request_id` = "SRA0001", `service_request_id` = "SRS0001", `batch_id` = "BAT1", `bioinfo_analysis_code` = "GEAN", `aliquot_id` = "1", `practitioner_role_id` = "PPR00101", `organization_id` = "OR00201", `is_proband` = true, `gender` = "Male", `analysis_display_name` = Some("Maladies musculaires (Panel global)"), `affected_status` = true, `affected_status_code` = "affected", `sample_id` = "1", `specimen_id` = "1", `family_id` = Some("FM00001"), `mother_id` = Some("PA0003"), `father_id` = Some("PA0002")),
+    EnrichedClinical(`patient_id` = "PA0002", `analysis_service_request_id` = "SRA0001", `service_request_id` = "SRS0002", `batch_id` = "BAT1", `bioinfo_analysis_code` = "GEAN", `aliquot_id` = "2", `practitioner_role_id` = "PPR00101", `organization_id` = "OR00201", `is_proband` = false, `gender` = "Male", `analysis_display_name` = Some("Maladies musculaires (Panel global)"), `affected_status` = false, `affected_status_code` = "not_affected", `sample_id` = "2", `specimen_id` = "2", `family_id` = Some("FM00001"), `mother_id` = None, `father_id` = None),
+    EnrichedClinical(`patient_id` = "PA0003", `analysis_service_request_id` = "SRA0001", `service_request_id` = "SRS0003", `batch_id` = "BAT1", `bioinfo_analysis_code` = "GEAN", `aliquot_id` = "3", `practitioner_role_id` = "PPR00101", `organization_id` = "OR00201", `is_proband` = false, `gender` = "Female", `analysis_display_name` = Some("Maladies musculaires (Panel global)"), `affected_status` = false, `affected_status_code` = "not_affected", `sample_id` = "3", `specimen_id` = "3", `family_id` = Some("FM00001"), `mother_id` = None, `father_id` = None),
+
+    EnrichedClinical(`patient_id` = "PA0004", `analysis_service_request_id` = "SRA0002", `service_request_id` = "SRS0004", `batch_id` = "BAT1", `bioinfo_analysis_code` = "GEAN", `aliquot_id` = "4", `practitioner_role_id` = "PPR00101", `organization_id` = "OR00201", `is_proband` = true, `gender` = "Female", `analysis_display_name` = Some("Maladies musculaires (Panel global)"), `affected_status` = true, `affected_status_code` = "affected", `sample_id` = "4", `specimen_id` = "4", `family_id` = Some("FM00002"), `mother_id` = None, `father_id` = None),
+    EnrichedClinical(`patient_id` = "PA0004", `analysis_service_request_id` = "SRA0002", `service_request_id` = "SRS0004", `batch_id` = "BAT1", `bioinfo_analysis_code` = "TEBA", `aliquot_id` = "5", `practitioner_role_id` = "PPR00101", `organization_id` = "OR00201", `is_proband` = true, `gender` = "Female", `analysis_display_name` = Some("Maladies musculaires (Panel global)"), `affected_status` = true, `affected_status_code` = "affected", `sample_id` = "5", `specimen_id` = "5", `family_id` = Some("FM00002"), `mother_id` = None, `father_id` = None),
   ).toDF()
-
-  val observationsDf: DataFrame = Seq(
-    ObservationOutput(id = "OB0001", patient_id = "PA0001", `observation_code` = "DSTA", `interpretation_code` = "affected"),
-    ObservationOutput(id = "OB0099", patient_id = "PA0001", `observation_code` = "OTHER", `interpretation_code` = "affected"),
-    ObservationOutput(id = "OB0002", patient_id = "PA0002", `observation_code` = "DSTA", `interpretation_code` = "not_affected"),
-    ObservationOutput(id = "OB0003", patient_id = "PA0003", `observation_code` = "DSTA", `interpretation_code` = "not_affected"),
-    ObservationOutput(id = "OB0004", patient_id = "PA0004", `observation_code` = "DSTA", `interpretation_code` = "affected"),
-  ).toDF()
-  val serviceRequestDf: DataFrame = Seq(
-    ServiceRequestOutput(service_request_type = "analysis", `id` = "SRA0001", `patient_id` = "PA0001",
-      family = Some(FAMILY(mother = Some("PA0003"), father = Some("PA0002"))),
-      family_id = Some("FM00001"),
-      `clinical_impressions` = Some(Seq("CI0001", "CI0002", "CI0003")),
-      `service_request_description` = Some("Maladies musculaires (Panel global)")
-    ),
-    ServiceRequestOutput(service_request_type = "analysis", `id` = "SRA0002", `patient_id` = "PA0004",
-      family = None,
-      family_id = Some("FM00002"),
-      `clinical_impressions` = Some(Seq("CI0004")),
-      `service_request_description` = Some("Maladies musculaires (Panel global)")
-    ),
-    ServiceRequestOutput(service_request_type = "sequencing", `id` = "SRS0001", `patient_id` = "PA0001", analysis_service_request_id = Some("SRA0001"), `service_request_description` = Some("Maladies musculaires (Panel global)")),
-    ServiceRequestOutput(service_request_type = "sequencing", `id` = "SRS0002", `patient_id` = "PA0002", analysis_service_request_id = Some("SRA0001"), `service_request_description` = Some("Maladies musculaires (Panel global)")),
-    ServiceRequestOutput(service_request_type = "sequencing", `id` = "SRS0003", `patient_id` = "PA0003", analysis_service_request_id = Some("SRA0001"), `service_request_description` = Some("Maladies musculaires (Panel global)")),
-    ServiceRequestOutput(service_request_type = "sequencing", `id` = "SRS0004", `patient_id` = "PA0004", analysis_service_request_id = Some("SRA0002"), `service_request_description` = Some("Maladies musculaires (Panel global)"))
-  ).toDF()
-
-  val taskDf: DataFrame = Seq(
-    TaskOutput(
-      batch_id = "BAT1",
-      `id` = "73254",
-      `patient_id` = "PA0001",
-      `service_request_id` = "SRS0001",
-      `specimen_id` = "TCGA-02-0001-01B-02D-0182-06",
-      `experiment` = EXPERIMENT(`name` = "BAT1", `aliquot_id` = "1")
-    ),
-    TaskOutput(
-      batch_id = "BAT1",
-      `id` = "73255",
-      `patient_id` = "PA0002",
-      `service_request_id` = "SRS0002",
-      `experiment` = EXPERIMENT(`name` = "BAT1", `aliquot_id` = "2")
-    ),
-    TaskOutput(
-      batch_id = "BAT1",
-      `id` = "73256",
-      `patient_id` = "PA0003",
-      `service_request_id` = "SRS0003",
-      `experiment` = EXPERIMENT(`name` = "BAT1", `aliquot_id` = "3")
-    ),
-    TaskOutput(
-      batch_id = "BAT1",
-      `id` = "73256",
-      `patient_id` = "PA0004",
-      `service_request_id` = "SRS0004",
-      `experiment` = EXPERIMENT(`name` = "BAT1", `aliquot_id` = "4")
-    ),
-    TaskOutput(
-      batch_id = "BAT1",
-      `id` = "73257",
-      `analysis_code` = "TEBA",
-      `patient_id` = "PA0004",
-      `service_request_id` = "SRS0004",
-      `experiment` = EXPERIMENT(`name` = "BAT1", `aliquot_id` = "5")
-    )
-  ).toDF
-
 
   val job1 = Variants(DeprecatedTestETLContext(), "BAT1")
   val job2 = Variants(DeprecatedTestETLContext(), "BAT2")
@@ -102,6 +34,7 @@ class VariantsSpec extends SparkSpec with WithTestConfig with CreateDatabasesBef
   val data: Map[String, DataFrame] = Map(
     raw_variant_calling.id -> Seq(
       VCF_SNV_Input(
+        referenceAllele = "T",
         `genotypes` = List(
           SNV_GENOTYPES(`sampleId` = "1", `calls` = List(1, 1)),
           SNV_GENOTYPES(`sampleId` = "2", `calls` = List(1, 0)),
@@ -122,10 +55,7 @@ class VariantsSpec extends SparkSpec with WithTestConfig with CreateDatabasesBef
           SNV_GENOTYPES(`sampleId` = "1", `calls` = List(1, 1), `alleleDepths` = List(0, 30)),
         ))
     ).toDF(),
-    clinical_impression.id -> clinicalImpressionsDf,
-    observation.id -> observationsDf,
-    task.id -> taskDf,
-    service_request.id -> serviceRequestDf
+    enriched_clinical.id -> clinicalDf
   )
 
   val dataSomatic: Map[String, DataFrame] = data ++ Map(
